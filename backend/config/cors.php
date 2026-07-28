@@ -14,11 +14,11 @@ return [
     |
     */
 
-    'paths' => ['/*','/login', '/register', 'sanctum/csrf-cookie'],
+    'paths' => ['/*', 'sanctum/csrf-cookie'],
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['http://app.publisher-website.test:5800',],
+    'allowed_origins' => ['http://app.backend.test:5173',], //?  must be exactly the URL of frontend without / at the end
 
     'allowed_origins_patterns' => [],
 

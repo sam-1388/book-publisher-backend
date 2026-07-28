@@ -19,16 +19,16 @@ return [
     */
 
     'stateful' => explode(',', env('SANCTUM_STATEFUL_DOMAINS', implode(',', [
-        'http://app.publisher-website.test:5800',
+        'http://app.backend.test:5173/',
         'localhost:5173',
         'localhost',
-        'localhost:3000',
         '127.0.0.1',
-        '127.0.0.1:8000',
         '::1',
-        Sanctum::currentApplicationUrlWithPort(),
-        //Sanctum::currentRequestHost(),
+        Sanctum::currentApplicationUrlWithPort(),    
     ]))),
+
+    //! you can add Sanctum::currentRequestHost(),
+    
 
     /*
     |--------------------------------------------------------------------------
