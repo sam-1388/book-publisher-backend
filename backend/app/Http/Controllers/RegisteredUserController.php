@@ -31,8 +31,36 @@ class RegisteredUserController extends Controller
 
 
         $user = User::create($credentials);
-        
+
         Auth::login($user);
+        return response(['user' => $user, 'success' => true], 200);
+    }
+
+    public function addInfo(Request $request)
+    {
+
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'publisher_name' => ['required'],
+                'location' => ['required']
+            ]
+        );
+
+        if ($validator->fails()) {
+            return response($validator->errors(), 422);
+        }
+
+        $publisherName = $request->input('publisher_name');
+        $location = $request->input('location');
+
+        $user = Auth::user();
+        if ($user->publisher_name!=null || $user->location != null) {
+            return response(['publisher_name'=>' ','location'=>'some of the values have already been set'],422);
+        }
+        $user->publisher_name = $publisherName;
+        $user->location = $location;    
+        $user->save();
         return response(['user' => $user, 'success' => true], 200);
     }
 }
