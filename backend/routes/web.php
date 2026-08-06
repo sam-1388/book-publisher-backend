@@ -15,8 +15,10 @@ Route::get('/login',function(){
 Route::post('/login',[SessionController::class,'store']);
 Route::post('/register',[RegisteredUserController::class,'store']);
 Route::post('/register2',[RegisteredUserController::class,'addInfo']);
+Route::get('/verificationCode',[RegisteredUserController::class,'getCode'])->middleware('auth:sanctum');
+Route::post('/verificationCode',[RegisteredUserController::class,'verifyCode'])->middleware('auth:sanctum');
 Route::post('/saveNumber',[RegisteredUserController::class,'storeNumber'])->middleware('auth:sanctum');
-Route::get('logout',[SessionController::class,'destroy'])->middleware('auth:sanctum');
+Route::get('logout',[SessionController::class,'destroy']);
 Route::get('/user', function (Request $request) {
     return $request->user();
 });
