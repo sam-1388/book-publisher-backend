@@ -9,9 +9,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/test', function () {
     return ['status'=>'done'];
 });
+
 Route::get('/login',function(){
     return ['redirect'=>'/login'];
 })->name('login');
+
 Route::post('/login',[SessionController::class,'store']);
 Route::post('/register',[RegisteredUserController::class,'store']);
 Route::post('/register2',[RegisteredUserController::class,'addInfo']);

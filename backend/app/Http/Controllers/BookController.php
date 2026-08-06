@@ -38,11 +38,11 @@ class BookController extends Controller
             $request->all(),
             [
                 'title' => ['required'],
-                'page_count' => ['integer', 'max:1000', 'nullable'],
+                'page_count' => ['integer', 'max:10000', 'nullable'],
                 'publishing_year' => [Rule::date()->format('Y')->todayOrBefore()],
                 'author' => ['required'],
                 'edition' => ['nullable'],
-                'number_of_copies' => ['between:0,1000', 'nullable'],
+                'number_of_copies' => ['between:0,100000', 'nullable'],
                 'image' => ['image', 'nullable'],
                 'notes' => ['max:500', 'nullable']
             ]
