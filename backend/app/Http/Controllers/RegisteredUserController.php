@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rules\Password;
-
+use Psy\Readline\Hoa\Console;
 
 class RegisteredUserController extends Controller
 {
@@ -29,16 +29,13 @@ class RegisteredUserController extends Controller
 
         $credentials = $validator->validated();
 
+        $request->session()->flash('credentials', $credentials);
 
-        $user = User::create($credentials);
-
-        Auth::login($user);
-        return response(['user' => $user, 'success' => true], 200);
+        return response(['success' => true], 200);
     }
 
     public function addInfo(Request $request)
     {
-
         $validator = Validator::make(
             $request->all(),
             [
@@ -50,17 +47,40 @@ class RegisteredUserController extends Controller
         if ($validator->fails()) {
             return response($validator->errors(), 422);
         }
-
-        $publisherName = $request->input('publisher_name');
-        $location = $request->input('location');
-
-        $user = Auth::user();
-        if ($user->publisher_name!=null || $user->location != null) {
-            return response(['publisher_name'=>' ','location'=>'some of the values have already been set'],422);
+        if (!$request->session()->has('credentials')) {
+            return response(['error' => 'invalid entry'], 404);
         }
-        $user->publisher_name = $publisherName;
-        $user->location = $location;    
-        $user->save();
+
+        $user = User::create([
+            ...$request->session()->get('credentials'),
+            ...$validator->safe()->all()
+        ]);
+        Auth::login($user);
         return response(['user' => $user, 'success' => true], 200);
+    }
+
+    public function storeNumber(Request $request){
+
+        $validator=Validator::make(
+            $request->all(),
+            [
+                'phoneNumber'=>['required','regex:/\d{10}/'],
+                'countryCode'=>['required']
+            ]
+        );
+
+        if ($validator->fails()) {
+            return response($validator->errors(), 422);
+        }
+        
+        $user=$request->user();
+        $user->phone_number=$request['phoneNumber'];
+        $user->country_code=trim($request['countryCode'],'+');
+        $user->save();
+
+        return response(['success'=>true],200);
+
+        
+
     }
 }

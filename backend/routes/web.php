@@ -14,11 +14,12 @@ Route::get('/login',function(){
 })->name('login');
 Route::post('/login',[SessionController::class,'store']);
 Route::post('/register',[RegisteredUserController::class,'store']);
-Route::post('/register2',[RegisteredUserController::class,'addInfo'])->middleware('auth:sanctum');
-Route::get('logout',[SessionController::class,'destroy']);
+Route::post('/register2',[RegisteredUserController::class,'addInfo']);
+Route::post('/saveNumber',[RegisteredUserController::class,'storeNumber'])->middleware('auth:sanctum');
+Route::get('logout',[SessionController::class,'destroy'])->middleware('auth:sanctum');
 Route::get('/user', function (Request $request) {
     return $request->user();
-})->middleware('auth:sanctum');
+});
 
 
 
