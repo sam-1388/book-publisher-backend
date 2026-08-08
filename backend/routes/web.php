@@ -30,6 +30,9 @@ Route::get('/user', function (Request $request) {
 Route::controller(BookController::class)->group(function(){
     Route::get('/books','index');
     Route::post('/books','store');
+    Route::get('/books/{book}','show');
+    Route::delete('/books/{book}','destroy');
+    Route::patch('/books/{book}','update');
 })->middleware('auth:sanctum');
 
 

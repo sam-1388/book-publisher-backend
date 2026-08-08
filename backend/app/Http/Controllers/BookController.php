@@ -18,16 +18,13 @@ class BookController extends Controller
     public function index()
     {
         $books = Book::all();
+        foreach ($books as $book) {
+            $book->image = url($book->image);
+        }
         return ['books' => $books];
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -39,7 +36,64 @@ class BookController extends Controller
             [
                 'title' => ['required'],
                 'page_count' => ['integer', 'max:10000', 'nullable'],
-                'publishing_year' => [Rule::date()->format('Y')->todayOrBefore()],
+                'publishing_year' => ['required', Rule::date()->format('Y')->todayOrBefore()],
+                'author' => ['required'],
+                'edition' => ['nullable'],
+                'number_of_copies' => ['between:0,100000', 'nullable'],
+                'image' => ['image', 'nullable', 'max:5120'],
+                'notes' => ['max:500', 'nullable']
+            ]
+        );
+
+        if ($validator->fails()) {
+            return response()->json(
+                $validator->errors(),
+                400
+            );
+        } else {
+
+            if ($request->hasFile('image')) {
+                $path = Storage::disk('public')->putFile('/images', $validator->safe()->file('image'));
+            } else {
+                $path = null;
+            }
+
+
+            $book = Book::create([
+                ...$validator->safe()->except(['image']),
+                'image' => $path
+            ]);
+
+            return response(
+                ['redirect' => "/books/{$book->id}", 'success' => true],
+                200
+            );
+        }
+    }
+
+    /**
+     * Display
+     *  the specified resource.
+     */
+    public function show(Book $book)
+    {
+        $book->image = url($book->image);
+        return $book;
+    }
+
+
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, Book $book)
+    {
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'title' => ['required'],
+                'page_count' => ['integer', 'max:10000', 'nullable'],
+                'publishing_year' => ['required', Rule::date()->format('Y')->todayOrBefore()],
                 'author' => ['required'],
                 'edition' => ['nullable'],
                 'number_of_copies' => ['between:0,100000', 'nullable'],
@@ -53,46 +107,23 @@ class BookController extends Controller
                 $validator->errors(),
                 400
             );
-        } else {
-                            // C:\Users\samps\AppData\Local\Temp\php6F37.tmp  
-                            // images/ayNziA3OwxHSVYurJ7HidmnVGudy3kzqsjLTEhbP.png  
-
-            Log::info($validator->safe()->file('image'));
-            $url = Storage::disk('public')->putFile('/images', $validator->safe()->file('image'));
-            // Str::replace($url,'\\','/');
-            Log::info($url);
-            $credentials = $validator->safe()->except('image');
-            $credentials = ['image' => $url, ...$credentials];
-            $book = Book::create($credentials);
-            return response(
-                ['redirect' => "books/{$book->id}"],
-                200
-            );
         }
-    }
+        
+        if ($request->hasFile('image')) {
+            Storage::disk('public')->delete($book->image);
+            $path = Storage::disk('public')->putFile('/images', $validator->safe()->file('image'));
+        } else {
+            $path = null;
+        }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Book $book)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Book $book)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Book $book)
-    {
-        //
+        $book->update([
+            ...$validator->safe()->except(['image']),
+            'image' => $path
+        ]);
+        return response(
+            ['redirect' => "/books/{$book->id}", 'success' => true],
+            200
+        );
     }
 
     /**
@@ -100,6 +131,8 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+        Storage::disk('public')->delete($book->image);
+        $book->delete();
+        return ['success' => true];
     }
 }
