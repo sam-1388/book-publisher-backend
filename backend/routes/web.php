@@ -1,13 +1,15 @@
 <?php
 
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\OccupationController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/test', function () {
-    return ['status'=>'done'];
+    return view('welcome');
 });
 
 Route::get('/login',function(){
@@ -31,8 +33,23 @@ Route::controller(BookController::class)->group(function(){
     Route::get('/books','index');
     Route::post('/books','store');
     Route::get('/books/{book}','show');
-    Route::delete('/books/{book}','destroy');
     Route::patch('/books/{book}','update');
+    Route::delete('/books/{book}','destroy'); 
 })->middleware('auth:sanctum');
 
 
+Route::controller(EmployeeController::class)->group(function(){
+    Route::get('/employees','index');
+    Route::post('/employees','store');
+    Route::get('/employees/{employee}','show');
+    Route::patch('/employees/{employee}','update');
+    Route::delete('/employees/{employee}','destroy');
+})->middleware('auth:sanctum');
+
+Route::controller(OccupationController::class)->group(function(){
+    Route::get('/occupations','index');
+    Route::post('/occupations','store');
+    Route::get('/occupations/{occupation}','show');
+    Route::patch('/occupations/{occupation}','update');
+    Route::delete('/occupations/{occupation}','destroy');
+})->middleware('auth:sanctum');
