@@ -58,7 +58,8 @@ class EmployeeController extends Controller
         return response([
             ...$employee->except(['image']),
             'selectedOccupations' => $employee->occupations,
-            'image' => route('employeeImage', [$employee->id])
+            'image' => route('employeeImage', [$employee->id]),
+            'occupationNames'=> $employee->occupations()->pluck('name'),
         ], 200);
     }
 
