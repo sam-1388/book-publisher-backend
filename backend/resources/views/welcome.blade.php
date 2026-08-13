@@ -2293,7 +2293,7 @@
         <div class="min-h-dvh">
             <section class="w-full max-w-7xl mx-auto p-4 sm:p-14 border-x border-dashed border-neutral-300 dark:border-white/[9%] px-6 py-0 sm:py-0">
                 <script>
-                    const markdown = '# Illuminate\\Database\\QueryException - Internal Server Error\n\nSQLSTATE[HY000]: General error: 1364 Field \u0027color\u0027 doesn\u0027t have a default value (Connection: mysql, Host: 127.0.0.1, Port: 3306, Database: publisher_website, SQL: insert into `occupations` (`name`, `updated_at`, `created_at`) values (sa, 2026-08-10 22:19:19, 2026-08-10 22:19:19))\n\nPHP 8.5.8\nLaravel 13.14.0\nbackend.test\n\n## Stack Trace\n\n0 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:841\n1 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:797\n2 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php:42\n3 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Processors\\MySqlProcessor.php:35\n4 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php:4251\n5 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php:2271\n6 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php:1660\n7 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php:1576\n8 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php:1380\n9 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php:1225\n10 - vendor\\laravel\\framework\\src\\Illuminate\\Support\\helpers.php:393\n11 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php:1224\n12 - vendor\\laravel\\framework\\src\\Illuminate\\Support\\Traits\\ForwardsCalls.php:23\n13 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php:2807\n14 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php:2823\n15 - app\\Http\\Controllers\\OccupationController.php:28\n16 - vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php:46\n17 - vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php:269\n18 - vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php:215\n19 - vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php:822\n20 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:180\n21 - vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php:52\n22 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n23 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestForgery.php:104\n24 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n25 - vendor\\laravel\\framework\\src\\Illuminate\\View\\Middleware\\ShareErrorsFromSession.php:48\n26 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n27 - vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php:120\n28 - vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php:63\n29 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n30 - vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse.php:36\n31 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n32 - vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\EncryptCookies.php:74\n33 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n34 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:137\n35 - vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php:821\n36 - vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php:800\n37 - vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php:764\n38 - vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php:753\n39 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php:200\n40 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:180\n41 - vendor\\inertiajs\\inertia-laravel\\src\\Middleware\\EnsureGetOnRedirect.php:19\n42 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n43 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php:21\n44 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php:31\n45 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n46 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php:21\n47 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php:51\n48 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n49 - vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\ValidatePostSize.php:27\n50 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n51 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php:109\n52 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n53 - vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php:74\n54 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n55 - vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php:58\n56 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n57 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\InvokeDeferredCallbacks.php:22\n58 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n59 - vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\ValidatePathEncoding.php:28\n60 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n61 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:137\n62 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php:175\n63 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php:144\n64 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php:1220\n65 - public\\index.php:20\n66 - C:\\Program Files\\Herd\\resources\\app.asar.unpacked\\resources\\valet\\server.php:139\n\n## Previous exception\n\n### 1. PDOException\n\nSQLSTATE[HY000]: General error: 1364 Field \u0027color\u0027 doesn\u0027t have a default value\n\n0 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php:53\n1 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php:53\n2 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:830\n3 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:797\n4 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php:42\n5 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Processors\\MySqlProcessor.php:35\n6 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php:4251\n7 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php:2271\n8 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php:1660\n9 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php:1576\n10 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php:1380\n11 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php:1225\n12 - vendor\\laravel\\framework\\src\\Illuminate\\Support\\helpers.php:393\n13 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php:1224\n14 - vendor\\laravel\\framework\\src\\Illuminate\\Support\\Traits\\ForwardsCalls.php:23\n15 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php:2807\n16 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php:2823\n17 - app\\Http\\Controllers\\OccupationController.php:28\n18 - vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php:46\n19 - vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php:269\n20 - vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php:215\n21 - vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php:822\n22 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:180\n23 - vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php:52\n24 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n25 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestForgery.php:104\n26 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n27 - vendor\\laravel\\framework\\src\\Illuminate\\View\\Middleware\\ShareErrorsFromSession.php:48\n28 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n29 - vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php:120\n30 - vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php:63\n31 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n32 - vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse.php:36\n33 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n34 - vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\EncryptCookies.php:74\n35 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n36 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:137\n37 - vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php:821\n38 - vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php:800\n39 - vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php:764\n40 - vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php:753\n41 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php:200\n42 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:180\n43 - vendor\\inertiajs\\inertia-laravel\\src\\Middleware\\EnsureGetOnRedirect.php:19\n44 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n45 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php:21\n46 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php:31\n47 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n48 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php:21\n49 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php:51\n50 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n51 - vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\ValidatePostSize.php:27\n52 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n53 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php:109\n54 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n55 - vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php:74\n56 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n57 - vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php:58\n58 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n59 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\InvokeDeferredCallbacks.php:22\n60 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n61 - vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\ValidatePathEncoding.php:28\n62 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n63 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:137\n64 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php:175\n65 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php:144\n66 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php:1220\n67 - public\\index.php:20\n68 - C:\\Program Files\\Herd\\resources\\app.asar.unpacked\\resources\\valet\\server.php:139\n\n## Request\n\nPOST \/occupations\n\n## Headers\n\n* **cookie**: PHPDEBUGBAR_STACK_DATA=%5B%5D; XSRF-TOKEN=eyJpdiI6IkVOZUFzQW9sNkJydTAyVjFQTzdxcEE9PSIsInZhbHVlIjoiWHJaTFNaWSsycEtyVHlvZ3lOVGc5TDhrT3U2SlQvZk8ybHV5SkRhWGpaRGJQUVBSUGxZNk4rbjNUMkpSRGR3NzFMcDRmR0hkK0puaUsveDlsc0pyQ0RYUUlDSEF4ODdXUml3RDJKUE5HZHRPczgwRWFGVk1hazN4V2hOeW40bU4iLCJtYWMiOiI2YmMwYzM4NTc1MjQ0Y2NmOWMzN2JjM2QyZjdkZTM3ZmQ5NmRiMWM0YmQ1Mzk2MmRjOTQ4NjI3NDM2YTc4ZDMzIiwidGFnIjoiIn0%3D; laravel-session=eyJpdiI6IlF1dnNHRG1RUG8yT3IyOHBrSDBLNFE9PSIsInZhbHVlIjoidkx1Mnh4V2UyK3liS3JzY2tJdjBuRnVmbVU2bmVBUGQ0R3RYYlRUdFhwVTNWWFJvVlVSZkJUc3JDRkpTdTJydWsyZ1NxN0J4bUdGcDgrZS93REdZd0RyWVdmTWl0eFhFbGdmcGJVcXRCWTNOTnpFN3NyTTVHSGhZdCt0dTFDeEUiLCJtYWMiOiI3ZjJmMzA3ZjhlZTc4NjQ1M2NhMTFkM2IxMGFhY2MyOTFjMTBmNTU3NDUxMGJmNmQxMDhkZDU0MDBjZDljZjg0IiwidGFnIjoiIn0%3D\n* **accept-language**: en-US,en;q=0.9,ar;q=0.8\n* **accept-encoding**: gzip, deflate\n* **referer**: http:\/\/app.backend.test:5173\/\n* **origin**: http:\/\/app.backend.test:5173\n* **content-type**: application\/json\n* **accept**: application\/json, text\/plain, *\/*\n* **user-agent**: Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/151.0.0.0 Safari\/537.36 Edg\/151.0.0.0\n* **x-xsrf-token**: eyJpdiI6IkVOZUFzQW9sNkJydTAyVjFQTzdxcEE9PSIsInZhbHVlIjoiWHJaTFNaWSsycEtyVHlvZ3lOVGc5TDhrT3U2SlQvZk8ybHV5SkRhWGpaRGJQUVBSUGxZNk4rbjNUMkpSRGR3NzFMcDRmR0hkK0puaUsveDlsc0pyQ0RYUUlDSEF4ODdXUml3RDJKUE5HZHRPczgwRWFGVk1hazN4V2hOeW40bU4iLCJtYWMiOiI2YmMwYzM4NTc1MjQ0Y2NmOWMzN2JjM2QyZjdkZTM3ZmQ5NmRiMWM0YmQ1Mzk2MmRjOTQ4NjI3NDM2YTc4ZDMzIiwidGFnIjoiIn0=\n* **content-length**: 31\n* **connection**: keep-alive\n* **host**: backend.test\n\n## Route Context\n\ncontroller: App\\Http\\Controllers\\OccupationController@store\nmiddleware: web\n\n## Route Parameters\n\nNo route parameter data available.\n\n## Database Queries\n\n* mysql - select * from `cache` where `key` in (\u0027laravel-cache-telescope:dump-watcher\u0027) (17.43 ms)\n* mysql - select * from `cache` where `key` in (\u0027laravel-cache-telescope:pause-recording\u0027) (0.28 ms)\n* mysql - select * from `sessions` where `id` = \u0027ZRkEwBpvjSVC35zchRG5kGHqdXqwmztM0r6NTrmR\u0027 limit 1 (0.38 ms)\n* mysql - select count(*) as `aggregate` from `occupations` where `name` = \u0027sa\u0027 (0.35 ms)\n* mysql - select * from `users` where `id` = 1 limit 1 (0.48 ms)\n'
+                    const markdown = '# Illuminate\\Database\\QueryException - Internal Server Error\n\nSQLSTATE[42S02]: Base table or view not found: 1146 Table \u0027publisher_website.employee_occupation\u0027 doesn\u0027t exist (Connection: mysql, Host: 127.0.0.1, Port: 3306, Database: publisher_website, SQL: insert into `employee_occupation` (`employee_id`, `occupation_id`) values (1, 2))\n\nPHP 8.5.8\nLaravel 13.14.0\nbackend.test\n\n## Stack Trace\n\n0 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:841\n1 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:797\n2 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php:42\n3 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php:4158\n4 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Relations\\Concerns\\InteractsWithPivotTable.php:345\n5 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Relations\\BelongsToMany.php:1356\n6 - app\\Http\\Controllers\\EmployeeController.php:37\n7 - vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php:46\n8 - vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php:269\n9 - vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php:215\n10 - vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php:822\n11 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:180\n12 - vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php:52\n13 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n14 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestForgery.php:104\n15 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n16 - vendor\\laravel\\framework\\src\\Illuminate\\View\\Middleware\\ShareErrorsFromSession.php:48\n17 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n18 - vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php:120\n19 - vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php:63\n20 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n21 - vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse.php:36\n22 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n23 - vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\EncryptCookies.php:74\n24 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n25 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:137\n26 - vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php:821\n27 - vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php:800\n28 - vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php:764\n29 - vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php:753\n30 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php:200\n31 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:180\n32 - vendor\\inertiajs\\inertia-laravel\\src\\Middleware\\EnsureGetOnRedirect.php:19\n33 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n34 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php:21\n35 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php:31\n36 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n37 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php:21\n38 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php:51\n39 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n40 - vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\ValidatePostSize.php:27\n41 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n42 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php:109\n43 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n44 - vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php:74\n45 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n46 - vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php:58\n47 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n48 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\InvokeDeferredCallbacks.php:22\n49 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n50 - vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\ValidatePathEncoding.php:28\n51 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n52 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:137\n53 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php:175\n54 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php:144\n55 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php:1220\n56 - public\\index.php:20\n57 - C:\\Program Files\\Herd\\resources\\app.asar.unpacked\\resources\\valet\\server.php:139\n\n## Previous exception\n\n### 1. PDOException\n\nSQLSTATE[42S02]: Base table or view not found: 1146 Table \u0027publisher_website.employee_occupation\u0027 doesn\u0027t exist\n\n0 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php:47\n1 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php:47\n2 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:830\n3 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:797\n4 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\MySqlConnection.php:42\n5 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php:4158\n6 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Relations\\Concerns\\InteractsWithPivotTable.php:345\n7 - vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Relations\\BelongsToMany.php:1356\n8 - app\\Http\\Controllers\\EmployeeController.php:37\n9 - vendor\\laravel\\framework\\src\\Illuminate\\Routing\\ControllerDispatcher.php:46\n10 - vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php:269\n11 - vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php:215\n12 - vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php:822\n13 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:180\n14 - vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php:52\n15 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n16 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestForgery.php:104\n17 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n18 - vendor\\laravel\\framework\\src\\Illuminate\\View\\Middleware\\ShareErrorsFromSession.php:48\n19 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n20 - vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php:120\n21 - vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php:63\n22 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n23 - vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse.php:36\n24 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n25 - vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\EncryptCookies.php:74\n26 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n27 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:137\n28 - vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php:821\n29 - vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php:800\n30 - vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php:764\n31 - vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php:753\n32 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php:200\n33 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:180\n34 - vendor\\inertiajs\\inertia-laravel\\src\\Middleware\\EnsureGetOnRedirect.php:19\n35 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n36 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php:21\n37 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php:31\n38 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n39 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php:21\n40 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php:51\n41 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n42 - vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\ValidatePostSize.php:27\n43 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n44 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php:109\n45 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n46 - vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php:74\n47 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n48 - vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php:58\n49 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n50 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\InvokeDeferredCallbacks.php:22\n51 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n52 - vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\ValidatePathEncoding.php:28\n53 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:219\n54 - vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php:137\n55 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php:175\n56 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php:144\n57 - vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php:1220\n58 - public\\index.php:20\n59 - C:\\Program Files\\Herd\\resources\\app.asar.unpacked\\resources\\valet\\server.php:139\n\n## Request\n\nPOST \/employees\n\n## Headers\n\n* **cookie**: PHPDEBUGBAR_STACK_DATA=%5B%5D; XSRF-TOKEN=eyJpdiI6InhjSE5FRDVzeHdKbHU1T0I4dTNaNHc9PSIsInZhbHVlIjoib1BNQzlEMnBSTVlIRmFFLzJvN0NrdW44N0t5UXNPdERQdVVQdXdsbDNFWFBZTDhTVXFUeFp5Qlc4N3g5TTM2azZvZ0ttZmU2OWFxU0hTSy94MFpLK3RkTzc3QUFpOGJkQ2NFZTNqWldWdS9UdXBjMnJ0SUphOFVteDlBOFRKdWYiLCJtYWMiOiI5MGRhY2E3N2NkODgyYTg3NjdmOTY1ZDc1YzI3ZGFmMWMyN2UxYTdmOWU0NWYwZDdjYmE3NGRlMzU4ODViOWJiIiwidGFnIjoiIn0%3D; laravel-session=eyJpdiI6ImxoOVN1ejZ2S2sxNG5VcUNVcWdNV0E9PSIsInZhbHVlIjoiRjRHL0FSWXYvcC9QMXlqVmJRWlgreTQ4aU9aaUZnYkNZV0Z0aktxWjVkUXNtTkZvVVRtb244Q2c5d2w2SDVRY2QydmhBODFLOTNRYlZrR0FnTGJCVjZQbFJQSGFPRGFZU081Ny9uZVYzV2V3SkxoOVFtTFJ2enRNbHhzTkZITHoiLCJtYWMiOiIyZjkwOTBjNWZlZjVkMjg5MmM5ZjkyOTViODRjMDdhNjJkZTJhNDNiNzMxNjdlMDZhOTc3OTYwN2M1ZDdiMjRlIiwidGFnIjoiIn0%3D\n* **accept-language**: en-US,en;q=0.9,ar;q=0.8\n* **accept-encoding**: gzip, deflate\n* **referer**: http:\/\/app.backend.test:5173\/\n* **origin**: http:\/\/app.backend.test:5173\n* **content-type**: multipart\/form-data; boundary=----WebKitFormBoundaryHZS0k3hAjEY7VVfr\n* **accept**: application\/json\n* **user-agent**: Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/151.0.0.0 Safari\/537.36 Edg\/151.0.0.0\n* **x-xsrf-token**: eyJpdiI6InhjSE5FRDVzeHdKbHU1T0I4dTNaNHc9PSIsInZhbHVlIjoib1BNQzlEMnBSTVlIRmFFLzJvN0NrdW44N0t5UXNPdERQdVVQdXdsbDNFWFBZTDhTVXFUeFp5Qlc4N3g5TTM2azZvZ0ttZmU2OWFxU0hTSy94MFpLK3RkTzc3QUFpOGJkQ2NFZTNqWldWdS9UdXBjMnJ0SUphOFVteDlBOFRKdWYiLCJtYWMiOiI5MGRhY2E3N2NkODgyYTg3NjdmOTY1ZDc1YzI3ZGFmMWMyN2UxYTdmOWU0NWYwZDdjYmE3NGRlMzU4ODViOWJiIiwidGFnIjoiIn0=\n* **content-length**: 179308\n* **connection**: keep-alive\n* **host**: backend.test\n\n## Route Context\n\ncontroller: App\\Http\\Controllers\\EmployeeController@store\nmiddleware: web\n\n## Route Parameters\n\nNo route parameter data available.\n\n## Database Queries\n\n* mysql - select * from `cache` where `key` in (\u0027laravel-cache-telescope:dump-watcher\u0027) (23.29 ms)\n* mysql - select * from `cache` where `key` in (\u0027laravel-cache-telescope:pause-recording\u0027) (0.31 ms)\n* mysql - select * from `sessions` where `id` = \u0027e9jJ968lFGwaEOFBmmKldg36Bzb6PQ6ioR1EYE8B\u0027 limit 1 (0.33 ms)\n* mysql - select count(*) as `aggregate` from `occupations` where `id` = \u00272\u0027 (2.53 ms)\n* mysql - insert into `employees` (`name`, `age`, `rating`, `image`, `updated_at`, `created_at`) values (\u0027s\u0027, \u002723\u0027, \u00273\u0027, \u0027employees\/U3GPYFuiAAwE4632goApxJLyYhO1WKi3ZWbah5YS.jpg\u0027, \u00272026-08-12 00:50:54\u0027, \u00272026-08-12 00:50:54\u0027) (11.8 ms)\n* mysql - select * from `occupations` where `occupations`.`id` = \u00272\u0027 limit 1 (0.54 ms)\n* mysql - select * from `users` where `id` = 1 limit 1 (0.71 ms)\n'
                 </script>
                 <div class="flex items-center justify-between" x-data="{
         copied: false,
@@ -2347,7 +2347,7 @@
                                 vendor\laravel\framework\src\Illuminate\Database\Connection.php<span class="text-neutral-500">:841</span>
                             </span>
                         </div>
-                        <p class="text-xl font-light text-neutral-800 dark:text-neutral-300">SQLSTATE[HY000]: General error: 1364 Field &#039;color &#039;doesn &#039;t have a default value (Connection: mysql, Host: 127.0.0.1, Port: 3306, Database: publisher_website, SQL: insert into `occupations` (`name`, `updated_at`, `created_at`) values (sa, 2026-08-10 22:19:19, 2026-08-10 22:19:19))
+                        <p class="text-xl font-light text-neutral-800 dark:text-neutral-300">SQLSTATE[42S02]: Base table or view not found: 1146 Table &#039;publisher_website.employee_occupation &#039;doesn &#039;t exist (Connection: mysql, Host: 127.0.0.1, Port: 3306, Database: publisher_website, SQL: insert into `employee_occupation` (`employee_id`, `occupation_id`) values (1, 2))
         </p>
                     </div>
                     <div class="flex items-start gap-2 mb-8 sm:mb-16">
@@ -2375,14 +2375,14 @@
                             UNHANDLED
 
                         </div>
-                        <div class="inline-flex w-fit shrink-0 items-center justify-center gap-1 font-mono leading-3 uppercase transition-colors dark:border [&amp;_svg]:size-2.5 h-6 min-w-5 rounded-md px-1.5 text-xs/none bg-rose-600 dark:border-rose-500 dark:bg-rose-600 text-white dark:text-white [&amp;_svg]:!text-white">CODE HY000
+                        <div class="inline-flex w-fit shrink-0 items-center justify-center gap-1 font-mono leading-3 uppercase transition-colors dark:border [&amp;_svg]:size-2.5 h-6 min-w-5 rounded-md px-1.5 text-xs/none bg-rose-600 dark:border-rose-500 dark:bg-rose-600 text-white dark:text-white [&amp;_svg]:!text-white">CODE 42S02
 </div>
                     </div>
                     <div x-data="{
         copied: false,
         async copyToClipboard() {
             try {
-                await window.copyToClipboard('http://backend.test/occupations');
+                await window.copyToClipboard('http://backend.test/employees');
                 this.copied = true;
                 setTimeout(() => { this.copied = false }, 3000);
             } catch (err) {
@@ -2415,7 +2415,7 @@
 
                             </div>
                             <div class="flex-1 text-sm font-light truncate text-neutral-950 dark:text-white">
-                                <span data-tippy-content="http://backend.test/occupations">http://backend.test/occupations
+                                <span data-tippy-content="http://backend.test/employees">http://backend.test/employees
             </span>
                             </div>
                             <button x-cloak @click="copyToClipboard()" class="rounded-md w-6 h-6 flex flex-shrink-0 items-center justify-center cursor-pointer border transition-colors duration-200 ease-in-out bg-white/5 border-neutral-200 hover:bg-neutral-100 dark:bg-white/5 dark:border-white/10 dark:hover:bg-white/10">
@@ -2481,7 +2481,7 @@
                                         </clipPath>
                                     </defs>
                                 </svg>
-                                <div class="flex-1 font-mono text-xs leading-3 text-neutral-900 dark:text-neutral-400">15 vendor frames
+                                <div class="flex-1 font-mono text-xs leading-3 text-neutral-900 dark:text-neutral-400">6 vendor frames
         </div>
                                 <button x-cloak type="button" class="flex h-6 w-6 cursor-pointer items-center justify-center rounded-md dark:border dark:border-white/8 group-hover:text-blue-500 group-hover:dark:text-emerald-500" :class="{
                 'text-blue-500 dark:text-emerald-500 dark:bg-white/5': expanded,
@@ -2601,25 +2601,25 @@
                                         <div class="flex">
                                             <div x-data="{ highlightedCode: null }" x-init="
         highlightedCode = window.highlight(
-            'Illuminate\\Database\\MySqlConnection-\u003Einsert(string, array, string)',
+            'Illuminate\\Database\\MySqlConnection-\u003Einsert(string, array)',
             'php',
             true,
             false,
             1,
             null
         );
-    " class="text-xs min-w-0" data-tippy-content="Illuminate\Database\MySqlConnection-&gt;insert(string, array, string)">
+    " class="text-xs min-w-0" data-tippy-content="Illuminate\Database\MySqlConnection-&gt;insert(string, array)">
                                                 <div x-cloak x-html="highlightedCode"></div>
                                                 <div x-show="!highlightedCode">
                                                     <pre class="truncate">
-                                                        <code>Illuminate\Database\MySqlConnection-&gt;insert(string, array, string)</code>
+                                                        <code>Illuminate\Database\MySqlConnection-&gt;insert(string, array)</code>
                                                     </pre>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="truncate font-mono text-xs text-neutral-500 dark:text-neutral-400 text-xs" dir="ltr">
-                                            <span data-tippy-content="vendor\laravel\framework\src\Illuminate\Database\Query\Processors\MySqlProcessor.php:35">
-                                                vendor\laravel\framework\src\Illuminate\Database\Query\Processors\MySqlProcessor.php<span class="text-neutral-500">:35</span>
+                                            <span data-tippy-content="vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:4158">
+                                                vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php<span class="text-neutral-500">:4158</span>
                                             </span>
                                         </div>
                                     </div>
@@ -2629,25 +2629,25 @@
                                         <div class="flex">
                                             <div x-data="{ highlightedCode: null }" x-init="
         highlightedCode = window.highlight(
-            'Illuminate\\Database\\Query\\Processors\\MySqlProcessor-\u003EprocessInsertGetId(object(Illuminate\\Database\\Query\\Builder), string, array, string)',
+            'Illuminate\\Database\\Query\\Builder-\u003Einsert(array)',
             'php',
             true,
             false,
             1,
             null
         );
-    " class="text-xs min-w-0" data-tippy-content="Illuminate\Database\Query\Processors\MySqlProcessor-&gt;processInsertGetId(object(Illuminate\Database\Query\Builder), string, array, string)">
+    " class="text-xs min-w-0" data-tippy-content="Illuminate\Database\Query\Builder-&gt;insert(array)">
                                                 <div x-cloak x-html="highlightedCode"></div>
                                                 <div x-show="!highlightedCode">
                                                     <pre class="truncate">
-                                                        <code>Illuminate\Database\Query\Processors\MySqlProcessor-&gt;processInsertGetId(object(Illuminate\Database\Query\Builder), string, array, string)</code>
+                                                        <code>Illuminate\Database\Query\Builder-&gt;insert(array)</code>
                                                     </pre>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="truncate font-mono text-xs text-neutral-500 dark:text-neutral-400 text-xs" dir="ltr">
-                                            <span data-tippy-content="vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:4251">
-                                                vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php<span class="text-neutral-500">:4251</span>
+                                            <span data-tippy-content="vendor\laravel\framework\src\Illuminate\Database\Eloquent\Relations\Concerns\InteractsWithPivotTable.php:345">
+                                                vendor\laravel\framework\src\Illuminate\Database\Eloquent\Relations\Concerns\InteractsWithPivotTable.php<span class="text-neutral-500">:345</span>
                                             </span>
                                         </div>
                                     </div>
@@ -2657,277 +2657,25 @@
                                         <div class="flex">
                                             <div x-data="{ highlightedCode: null }" x-init="
         highlightedCode = window.highlight(
-            'Illuminate\\Database\\Query\\Builder-\u003EinsertGetId(array, string)',
+            'Illuminate\\Database\\Eloquent\\Relations\\BelongsToMany-\u003Eattach(object(App\\Models\\Occupation), array, boolean)',
             'php',
             true,
             false,
             1,
             null
         );
-    " class="text-xs min-w-0" data-tippy-content="Illuminate\Database\Query\Builder-&gt;insertGetId(array, string)">
+    " class="text-xs min-w-0" data-tippy-content="Illuminate\Database\Eloquent\Relations\BelongsToMany-&gt;attach(object(App\Models\Occupation), array, boolean)">
                                                 <div x-cloak x-html="highlightedCode"></div>
                                                 <div x-show="!highlightedCode">
                                                     <pre class="truncate">
-                                                        <code>Illuminate\Database\Query\Builder-&gt;insertGetId(array, string)</code>
+                                                        <code>Illuminate\Database\Eloquent\Relations\BelongsToMany-&gt;attach(object(App\Models\Occupation), array, boolean)</code>
                                                     </pre>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="truncate font-mono text-xs text-neutral-500 dark:text-neutral-400 text-xs" dir="ltr">
-                                            <span data-tippy-content="vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:2271">
-                                                vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php<span class="text-neutral-500">:2271</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col divide-y divide-neutral-200 dark:divide-white/5">
-                                    <div class="grid gap-3 p-4 bg-neutral-50 dark:bg-transparent overflow-x-auto rounded-lg">
-                                        <div class="flex">
-                                            <div x-data="{ highlightedCode: null }" x-init="
-        highlightedCode = window.highlight(
-            'Illuminate\\Database\\Eloquent\\Builder-\u003E__call(string, array)',
-            'php',
-            true,
-            false,
-            1,
-            null
-        );
-    " class="text-xs min-w-0" data-tippy-content="Illuminate\Database\Eloquent\Builder-&gt;__call(string, array)">
-                                                <div x-cloak x-html="highlightedCode"></div>
-                                                <div x-show="!highlightedCode">
-                                                    <pre class="truncate">
-                                                        <code>Illuminate\Database\Eloquent\Builder-&gt;__call(string, array)</code>
-                                                    </pre>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="truncate font-mono text-xs text-neutral-500 dark:text-neutral-400 text-xs" dir="ltr">
-                                            <span data-tippy-content="vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1660">
-                                                vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php<span class="text-neutral-500">:1660</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col divide-y divide-neutral-200 dark:divide-white/5">
-                                    <div class="grid gap-3 p-4 bg-neutral-50 dark:bg-transparent overflow-x-auto rounded-lg">
-                                        <div class="flex">
-                                            <div x-data="{ highlightedCode: null }" x-init="
-        highlightedCode = window.highlight(
-            'Illuminate\\Database\\Eloquent\\Model-\u003EinsertAndSetId(object(Illuminate\\Database\\Eloquent\\Builder), array)',
-            'php',
-            true,
-            false,
-            1,
-            null
-        );
-    " class="text-xs min-w-0" data-tippy-content="Illuminate\Database\Eloquent\Model-&gt;insertAndSetId(object(Illuminate\Database\Eloquent\Builder), array)">
-                                                <div x-cloak x-html="highlightedCode"></div>
-                                                <div x-show="!highlightedCode">
-                                                    <pre class="truncate">
-                                                        <code>Illuminate\Database\Eloquent\Model-&gt;insertAndSetId(object(Illuminate\Database\Eloquent\Builder), array)</code>
-                                                    </pre>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="truncate font-mono text-xs text-neutral-500 dark:text-neutral-400 text-xs" dir="ltr">
-                                            <span data-tippy-content="vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1576">
-                                                vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php<span class="text-neutral-500">:1576</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col divide-y divide-neutral-200 dark:divide-white/5">
-                                    <div class="grid gap-3 p-4 bg-neutral-50 dark:bg-transparent overflow-x-auto rounded-lg">
-                                        <div class="flex">
-                                            <div x-data="{ highlightedCode: null }" x-init="
-        highlightedCode = window.highlight(
-            'Illuminate\\Database\\Eloquent\\Model-\u003EperformInsert(object(Illuminate\\Database\\Eloquent\\Builder))',
-            'php',
-            true,
-            false,
-            1,
-            null
-        );
-    " class="text-xs min-w-0" data-tippy-content="Illuminate\Database\Eloquent\Model-&gt;performInsert(object(Illuminate\Database\Eloquent\Builder))">
-                                                <div x-cloak x-html="highlightedCode"></div>
-                                                <div x-show="!highlightedCode">
-                                                    <pre class="truncate">
-                                                        <code>Illuminate\Database\Eloquent\Model-&gt;performInsert(object(Illuminate\Database\Eloquent\Builder))</code>
-                                                    </pre>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="truncate font-mono text-xs text-neutral-500 dark:text-neutral-400 text-xs" dir="ltr">
-                                            <span data-tippy-content="vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1380">
-                                                vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php<span class="text-neutral-500">:1380</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col divide-y divide-neutral-200 dark:divide-white/5">
-                                    <div class="grid gap-3 p-4 bg-neutral-50 dark:bg-transparent overflow-x-auto rounded-lg">
-                                        <div class="flex">
-                                            <div x-data="{ highlightedCode: null }" x-init="
-        highlightedCode = window.highlight(
-            'Illuminate\\Database\\Eloquent\\Model-\u003Esave()',
-            'php',
-            true,
-            false,
-            1,
-            null
-        );
-    " class="text-xs min-w-0" data-tippy-content="Illuminate\Database\Eloquent\Model-&gt;save()">
-                                                <div x-cloak x-html="highlightedCode"></div>
-                                                <div x-show="!highlightedCode">
-                                                    <pre class="truncate">
-                                                        <code>Illuminate\Database\Eloquent\Model-&gt;save()</code>
-                                                    </pre>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="truncate font-mono text-xs text-neutral-500 dark:text-neutral-400 text-xs" dir="ltr">
-                                            <span data-tippy-content="vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1225">
-                                                vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php<span class="text-neutral-500">:1225</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col divide-y divide-neutral-200 dark:divide-white/5">
-                                    <div class="grid gap-3 p-4 bg-neutral-50 dark:bg-transparent overflow-x-auto rounded-lg">
-                                        <div class="flex">
-                                            <div x-data="{ highlightedCode: null }" x-init="
-        highlightedCode = window.highlight(
-            'Illuminate\\Database\\Eloquent\\Builder-\u003E{closure:Illuminate\\Database\\Eloquent\\Builder::create():1224}(object(App\\Models\\Occupation))',
-            'php',
-            true,
-            false,
-            1,
-            null
-        );
-    " class="text-xs min-w-0" data-tippy-content="Illuminate\Database\Eloquent\Builder-&gt;{closure:Illuminate\Database\Eloquent\Builder::create():1224}(object(App\Models\Occupation))">
-                                                <div x-cloak x-html="highlightedCode"></div>
-                                                <div x-show="!highlightedCode">
-                                                    <pre class="truncate">
-                                                        <code>Illuminate\Database\Eloquent\Builder-&gt;{closure:Illuminate\Database\Eloquent\Builder::create():1224}(object(App\Models\Occupation))</code>
-                                                    </pre>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="truncate font-mono text-xs text-neutral-500 dark:text-neutral-400 text-xs" dir="ltr">
-                                            <span data-tippy-content="vendor\laravel\framework\src\Illuminate\Support\helpers.php:393">
-                                                vendor\laravel\framework\src\Illuminate\Support\helpers.php<span class="text-neutral-500">:393</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col divide-y divide-neutral-200 dark:divide-white/5">
-                                    <div class="grid gap-3 p-4 bg-neutral-50 dark:bg-transparent overflow-x-auto rounded-lg">
-                                        <div class="flex">
-                                            <div x-data="{ highlightedCode: null }" x-init="
-        highlightedCode = window.highlight(
-            'tap(object(App\\Models\\Occupation), object(Closure))',
-            'php',
-            true,
-            false,
-            1,
-            null
-        );
-    " class="text-xs min-w-0" data-tippy-content="tap(object(App\Models\Occupation), object(Closure))">
-                                                <div x-cloak x-html="highlightedCode"></div>
-                                                <div x-show="!highlightedCode">
-                                                    <pre class="truncate">
-                                                        <code>tap(object(App\Models\Occupation), object(Closure))</code>
-                                                    </pre>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="truncate font-mono text-xs text-neutral-500 dark:text-neutral-400 text-xs" dir="ltr">
-                                            <span data-tippy-content="vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1224">
-                                                vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php<span class="text-neutral-500">:1224</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col divide-y divide-neutral-200 dark:divide-white/5">
-                                    <div class="grid gap-3 p-4 bg-neutral-50 dark:bg-transparent overflow-x-auto rounded-lg">
-                                        <div class="flex">
-                                            <div x-data="{ highlightedCode: null }" x-init="
-        highlightedCode = window.highlight(
-            'Illuminate\\Database\\Eloquent\\Builder-\u003Ecreate(array)',
-            'php',
-            true,
-            false,
-            1,
-            null
-        );
-    " class="text-xs min-w-0" data-tippy-content="Illuminate\Database\Eloquent\Builder-&gt;create(array)">
-                                                <div x-cloak x-html="highlightedCode"></div>
-                                                <div x-show="!highlightedCode">
-                                                    <pre class="truncate">
-                                                        <code>Illuminate\Database\Eloquent\Builder-&gt;create(array)</code>
-                                                    </pre>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="truncate font-mono text-xs text-neutral-500 dark:text-neutral-400 text-xs" dir="ltr">
-                                            <span data-tippy-content="vendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php:23">
-                                                vendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php<span class="text-neutral-500">:23</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col divide-y divide-neutral-200 dark:divide-white/5">
-                                    <div class="grid gap-3 p-4 bg-neutral-50 dark:bg-transparent overflow-x-auto rounded-lg">
-                                        <div class="flex">
-                                            <div x-data="{ highlightedCode: null }" x-init="
-        highlightedCode = window.highlight(
-            'Illuminate\\Database\\Eloquent\\Model-\u003EforwardCallTo(object(Illuminate\\Database\\Eloquent\\Builder), string, array)',
-            'php',
-            true,
-            false,
-            1,
-            null
-        );
-    " class="text-xs min-w-0" data-tippy-content="Illuminate\Database\Eloquent\Model-&gt;forwardCallTo(object(Illuminate\Database\Eloquent\Builder), string, array)">
-                                                <div x-cloak x-html="highlightedCode"></div>
-                                                <div x-show="!highlightedCode">
-                                                    <pre class="truncate">
-                                                        <code>Illuminate\Database\Eloquent\Model-&gt;forwardCallTo(object(Illuminate\Database\Eloquent\Builder), string, array)</code>
-                                                    </pre>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="truncate font-mono text-xs text-neutral-500 dark:text-neutral-400 text-xs" dir="ltr">
-                                            <span data-tippy-content="vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:2807">
-                                                vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php<span class="text-neutral-500">:2807</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col divide-y divide-neutral-200 dark:divide-white/5">
-                                    <div class="grid gap-3 p-4 bg-neutral-50 dark:bg-transparent overflow-x-auto rounded-lg">
-                                        <div class="flex">
-                                            <div x-data="{ highlightedCode: null }" x-init="
-        highlightedCode = window.highlight(
-            'Illuminate\\Database\\Eloquent\\Model-\u003E__call(string, array)',
-            'php',
-            true,
-            false,
-            1,
-            null
-        );
-    " class="text-xs min-w-0" data-tippy-content="Illuminate\Database\Eloquent\Model-&gt;__call(string, array)">
-                                                <div x-cloak x-html="highlightedCode"></div>
-                                                <div x-show="!highlightedCode">
-                                                    <pre class="truncate">
-                                                        <code>Illuminate\Database\Eloquent\Model-&gt;__call(string, array)</code>
-                                                    </pre>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="truncate font-mono text-xs text-neutral-500 dark:text-neutral-400 text-xs" dir="ltr">
-                                            <span data-tippy-content="vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:2823">
-                                                vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php<span class="text-neutral-500">:2823</span>
+                                            <span data-tippy-content="vendor\laravel\framework\src\Illuminate\Database\Eloquent\Relations\BelongsToMany.php:1356">
+                                                vendor\laravel\framework\src\Illuminate\Database\Eloquent\Relations\BelongsToMany.php<span class="text-neutral-500">:1356</span>
                                             </span>
                                         </div>
                                     </div>
@@ -2952,24 +2700,24 @@
                                 <div class="flex flex-1 items-center justify-between gap-6 min-w-0">
                                     <div x-data="{ highlightedCode: null }" x-init="
         highlightedCode = window.highlight(
-            'Illuminate\\Database\\Eloquent\\Model::__callStatic(string, array)',
+            'Illuminate\\Database\\Eloquent\\Relations\\BelongsToMany-\u003Esave(object(App\\Models\\Occupation))',
             'php',
             true,
             false,
             1,
             null
         );
-    " class="text-xs min-w-0" data-tippy-content="Illuminate\Database\Eloquent\Model::__callStatic(string, array)">
+    " class="text-xs min-w-0" data-tippy-content="Illuminate\Database\Eloquent\Relations\BelongsToMany-&gt;save(object(App\Models\Occupation))">
                                         <div x-cloak x-html="highlightedCode"></div>
                                         <div x-show="!highlightedCode">
                                             <pre class="truncate">
-                                                <code>Illuminate\Database\Eloquent\Model::__callStatic(string, array)</code>
+                                                <code>Illuminate\Database\Eloquent\Relations\BelongsToMany-&gt;save(object(App\Models\Occupation))</code>
                                             </pre>
                                         </div>
                                     </div>
                                     <div class="truncate font-mono text-xs text-neutral-500 dark:text-neutral-400" dir="rtl">
-                                        <span data-tippy-content="app\Http\Controllers\OccupationController.php:28">
-                                            app\Http\Controllers\OccupationController.php<span class="text-neutral-500">:28</span>
+                                        <span data-tippy-content="app\Http\Controllers\EmployeeController.php:37">
+                                            app\Http\Controllers\EmployeeController.php<span class="text-neutral-500">:37</span>
                                         </span>
                                     </div>
                                 </div>
@@ -3006,11 +2754,11 @@
                             <div class="text-sm rounded-b-lg bg-neutral-50 border-t border-neutral-100 dark:bg-neutral-900 dark:border-white/10" x-show="expanded">
                                 <div x-data="{ highlightedCode: null }" x-init="
         highlightedCode = window.highlight(
-            '        $data=$request-\u003Evalidate([\n            \u0027name\u0027=\u003E[\u0027required\u0027,\u0027unique:occupations\u0027],\n            \u0027color\u0027=\u003E[\u0027required\u0027,\u0027hex_color\u0027]\n        ]);\n\n        Occupation::create($data);\n        \n        return response([\u0027success\u0027=\u003Etrue],200);\n    }\n\n    \/**\n     * Display the specified resource.\n     *\/\n    public function show(Occupation $occupation)\n    {\n        return [\u0027occupation\u0027=\u003E$occupation];\n    }\n',
+            '        ];\n\n        $employee = Employee::create($data);\n        foreach ($request-\u003Evalidated(\u0027selectedOccupations\u0027) as $id) {\n            $temp = Occupation::findOrFail($id);\n            $employee-\u003Eoccupations()-\u003Esave($temp);\n        }\n\n        return response([\u0027success\u0027 =\u003E true], 200);\n    }\n\n    \/**\n     * Display the specified resource.\n     *\/\n    public function show(Employee $employee)\n    {\n        return [\u0027employee\u0027 =\u003E $employee];\n',
             'php',
             false,
             true,
-            23,
+            32,
             5
         );
     " class="overflow-x-auto">
@@ -3019,72 +2767,72 @@
                                         <pre>
                                             <code>
                                                 <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
-                                                    <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">23</span>
-                                                    $data=$request-&gt;validate([
-                                                </span>
-                                                <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
-                                                    <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">24</span>
-                                                    &#039;name &#039;=&gt;[&#039;required &#039;,&#039;unique:occupations &#039;],
-                                                </span>
-                                                <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
-                                                    <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">25</span>
-                                                    &#039;color &#039;=&gt;[&#039;required &#039;,&#039;hex_color &#039;]
-                                                </span>
-                                                <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
-                                                    <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">26</span>
-                                                    ]);
-                                                </span>
-                                                <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
-                                                    <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">27</span>
-                                                </span>
-                                                <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 bg-rose-200! dark:bg-rose-900!">
-                                                    <span class="mr-6 text-neutral-500! dark:text-neutral-600! dark:text-white!">28</span>
-                                                    Occupation::create($data);
-                                                </span>
-                                                <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
-                                                    <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">29</span>
-                                                </span>
-                                                <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
-                                                    <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">30</span>
-                                                    return response([&#039;success &#039;=&gt;true],200);
-                                                </span>
-                                                <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
-                                                    <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">31</span>
-                                                    }
-                                                </span>
-                                                <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
                                                     <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">32</span>
+                                                    ];
                                                 </span>
                                                 <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
                                                     <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">33</span>
-                                                    /**
                                                 </span>
                                                 <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
                                                     <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">34</span>
-                                                    * Display the specified resource.
+                                                    $employee = Employee::create($data);
                                                 </span>
                                                 <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
                                                     <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">35</span>
-                                                    */
+                                                    foreach ($request-&gt;validated(&#039;selectedOccupations &#039;) as $id) {
                                                 </span>
                                                 <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
                                                     <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">36</span>
-                                                    public function show(Occupation $occupation)
+                                                    $temp = Occupation::findOrFail($id);
                                                 </span>
-                                                <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
-                                                    <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">37</span>
-                                                    {
+                                                <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 bg-rose-200! dark:bg-rose-900!">
+                                                    <span class="mr-6 text-neutral-500! dark:text-neutral-600! dark:text-white!">37</span>
+                                                    $employee-&gt;occupations()-&gt;save($temp);
                                                 </span>
                                                 <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
                                                     <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">38</span>
-                                                    return [&#039;occupation &#039;=&gt;$occupation];
-                                                </span>
-                                                <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
-                                                    <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">39</span>
                                                     }
                                                 </span>
                                                 <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
+                                                    <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">39</span>
+                                                </span>
+                                                <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
                                                     <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">40</span>
+                                                    return response([&#039;success &#039;=&gt;true], 200);
+                                                </span>
+                                                <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
+                                                    <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">41</span>
+                                                    }
+                                                </span>
+                                                <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
+                                                    <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">42</span>
+                                                </span>
+                                                <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
+                                                    <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">43</span>
+                                                    /**
+                                                </span>
+                                                <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
+                                                    <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">44</span>
+                                                    * Display the specified resource.
+                                                </span>
+                                                <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
+                                                    <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">45</span>
+                                                    */
+                                                </span>
+                                                <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
+                                                    <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">46</span>
+                                                    public function show(Employee $employee)
+                                                </span>
+                                                <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
+                                                    <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">47</span>
+                                                    {
+                                                </span>
+                                                <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
+                                                    <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">48</span>
+                                                    return [&#039;employee &#039;=&gt;$employee];
+                                                </span>
+                                                <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
+                                                    <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">49</span>
                                                 </span>
                                             </code>
                                         </pre>
@@ -3149,18 +2897,18 @@
                                         <div class="flex">
                                             <div x-data="{ highlightedCode: null }" x-init="
         highlightedCode = window.highlight(
-            'App\\Http\\Controllers\\OccupationController-\u003Estore(object(Illuminate\\Http\\Request))',
+            'App\\Http\\Controllers\\EmployeeController-\u003Estore(object(App\\Http\\Requests\\StoreEmployeeRequest))',
             'php',
             true,
             false,
             1,
             null
         );
-    " class="text-xs min-w-0" data-tippy-content="App\Http\Controllers\OccupationController-&gt;store(object(Illuminate\Http\Request))">
+    " class="text-xs min-w-0" data-tippy-content="App\Http\Controllers\EmployeeController-&gt;store(object(App\Http\Requests\StoreEmployeeRequest))">
                                                 <div x-cloak x-html="highlightedCode"></div>
                                                 <div x-show="!highlightedCode">
                                                     <pre class="truncate">
-                                                        <code>App\Http\Controllers\OccupationController-&gt;store(object(Illuminate\Http\Request))</code>
+                                                        <code>App\Http\Controllers\EmployeeController-&gt;store(object(App\Http\Requests\StoreEmployeeRequest))</code>
                                                     </pre>
                                                 </div>
                                             </div>
@@ -3177,18 +2925,18 @@
                                         <div class="flex">
                                             <div x-data="{ highlightedCode: null }" x-init="
         highlightedCode = window.highlight(
-            'Illuminate\\Routing\\ControllerDispatcher-\u003Edispatch(object(Illuminate\\Routing\\Route), object(App\\Http\\Controllers\\OccupationController), string)',
+            'Illuminate\\Routing\\ControllerDispatcher-\u003Edispatch(object(Illuminate\\Routing\\Route), object(App\\Http\\Controllers\\EmployeeController), string)',
             'php',
             true,
             false,
             1,
             null
         );
-    " class="text-xs min-w-0" data-tippy-content="Illuminate\Routing\ControllerDispatcher-&gt;dispatch(object(Illuminate\Routing\Route), object(App\Http\Controllers\OccupationController), string)">
+    " class="text-xs min-w-0" data-tippy-content="Illuminate\Routing\ControllerDispatcher-&gt;dispatch(object(Illuminate\Routing\Route), object(App\Http\Controllers\EmployeeController), string)">
                                                 <div x-cloak x-html="highlightedCode"></div>
                                                 <div x-show="!highlightedCode">
                                                     <pre class="truncate">
-                                                        <code>Illuminate\Routing\ControllerDispatcher-&gt;dispatch(object(Illuminate\Routing\Route), object(App\Http\Controllers\OccupationController), string)</code>
+                                                        <code>Illuminate\Routing\ControllerDispatcher-&gt;dispatch(object(Illuminate\Routing\Route), object(App\Http\Controllers\EmployeeController), string)</code>
                                                     </pre>
                                                 </div>
                                             </div>
@@ -4724,7 +4472,7 @@
                                 <div class="flex gap-2.5 p-3 cursor-pointer rounded-lg" :class="{ 'hover:bg-white/50 dark:hover:bg-white/2': !expanded }" @click="expanded = !expanded">
                                     <div class="flex-1 min-w-0" :class="expanded ? 'flex flex-col' : 'flex items-baseline gap-2'">
                                         <h4 class="font-mono text-sm font-medium text-neutral-900 dark:text-white flex-shrink-0 max-w-full truncate">PDOException</h4>
-                                        <p class="text-sm text-neutral-500 dark:text-neutral-400" :class="expanded ? 'mt-1 break-words' : 'truncate'">SQLSTATE[HY000]: General error: 1364 Field &#039;color &#039;doesn &#039;t have a default value</p>
+                                        <p class="text-sm text-neutral-500 dark:text-neutral-400" :class="expanded ? 'mt-1 break-words' : 'truncate'">SQLSTATE[42S02]: Base table or view not found: 1146 Table &#039;publisher_website.employee_occupation &#039;doesn &#039;t exist</p>
                                     </div>
                                     <button type="button" class="flex h-6 w-6 flex-shrink-0 cursor-pointer items-center justify-center rounded-md border border-neutral-200 dark:border-white/8 group-hover/exception:text-blue-500 group-hover/exception:dark:text-emerald-500" :class="{
                                 'text-blue-500 dark:text-emerald-500 dark:bg-white/5': expanded,
@@ -4776,7 +4524,7 @@
                                                     </clipPath>
                                                 </defs>
                                             </svg>
-                                            <div class="flex-1 font-mono text-xs leading-3 text-neutral-900 dark:text-neutral-400">17 vendor frames
+                                            <div class="flex-1 font-mono text-xs leading-3 text-neutral-900 dark:text-neutral-400">8 vendor frames
         </div>
                                             <button x-cloak type="button" class="flex h-6 w-6 cursor-pointer items-center justify-center rounded-md dark:border dark:border-white/8 group-hover:text-blue-500 group-hover:dark:text-emerald-500" :class="{
                 'text-blue-500 dark:text-emerald-500 dark:bg-white/5': expanded,
@@ -4812,25 +4560,25 @@
                                                     <div class="flex">
                                                         <div x-data="{ highlightedCode: null }" x-init="
         highlightedCode = window.highlight(
-            'PDOStatement-\u003Eexecute()',
+            'PDO-\u003Eprepare(string)',
             'php',
             true,
             false,
             1,
             null
         );
-    " class="text-xs min-w-0" data-tippy-content="PDOStatement-&gt;execute()">
+    " class="text-xs min-w-0" data-tippy-content="PDO-&gt;prepare(string)">
                                                             <div x-cloak x-html="highlightedCode"></div>
                                                             <div x-show="!highlightedCode">
                                                                 <pre class="truncate">
-                                                                    <code>PDOStatement-&gt;execute()</code>
+                                                                    <code>PDO-&gt;prepare(string)</code>
                                                                 </pre>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="truncate font-mono text-xs text-neutral-500 dark:text-neutral-400 text-xs" dir="ltr">
-                                                        <span data-tippy-content="vendor\laravel\framework\src\Illuminate\Database\MySqlConnection.php:53">
-                                                            vendor\laravel\framework\src\Illuminate\Database\MySqlConnection.php<span class="text-neutral-500">:53</span>
+                                                        <span data-tippy-content="vendor\laravel\framework\src\Illuminate\Database\MySqlConnection.php:47">
+                                                            vendor\laravel\framework\src\Illuminate\Database\MySqlConnection.php<span class="text-neutral-500">:47</span>
                                                         </span>
                                                     </div>
                                                 </div>
@@ -4840,25 +4588,25 @@
                                                     <div class="flex">
                                                         <div x-data="{ highlightedCode: null }" x-init="
         highlightedCode = window.highlight(
-            'PDOStatement-\u003Eexecute()',
+            'PDO-\u003Eprepare(string)',
             'php',
             true,
             false,
             1,
             null
         );
-    " class="text-xs min-w-0" data-tippy-content="PDOStatement-&gt;execute()">
+    " class="text-xs min-w-0" data-tippy-content="PDO-&gt;prepare(string)">
                                                             <div x-cloak x-html="highlightedCode"></div>
                                                             <div x-show="!highlightedCode">
                                                                 <pre class="truncate">
-                                                                    <code>PDOStatement-&gt;execute()</code>
+                                                                    <code>PDO-&gt;prepare(string)</code>
                                                                 </pre>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="truncate font-mono text-xs text-neutral-500 dark:text-neutral-400 text-xs" dir="ltr">
-                                                        <span data-tippy-content="vendor\laravel\framework\src\Illuminate\Database\MySqlConnection.php:53">
-                                                            vendor\laravel\framework\src\Illuminate\Database\MySqlConnection.php<span class="text-neutral-500">:53</span>
+                                                        <span data-tippy-content="vendor\laravel\framework\src\Illuminate\Database\MySqlConnection.php:47">
+                                                            vendor\laravel\framework\src\Illuminate\Database\MySqlConnection.php<span class="text-neutral-500">:47</span>
                                                         </span>
                                                     </div>
                                                 </div>
@@ -4952,25 +4700,25 @@
                                                     <div class="flex">
                                                         <div x-data="{ highlightedCode: null }" x-init="
         highlightedCode = window.highlight(
-            'Illuminate\\Database\\MySqlConnection-\u003Einsert(string, array, string)',
+            'Illuminate\\Database\\MySqlConnection-\u003Einsert(string, array)',
             'php',
             true,
             false,
             1,
             null
         );
-    " class="text-xs min-w-0" data-tippy-content="Illuminate\Database\MySqlConnection-&gt;insert(string, array, string)">
+    " class="text-xs min-w-0" data-tippy-content="Illuminate\Database\MySqlConnection-&gt;insert(string, array)">
                                                             <div x-cloak x-html="highlightedCode"></div>
                                                             <div x-show="!highlightedCode">
                                                                 <pre class="truncate">
-                                                                    <code>Illuminate\Database\MySqlConnection-&gt;insert(string, array, string)</code>
+                                                                    <code>Illuminate\Database\MySqlConnection-&gt;insert(string, array)</code>
                                                                 </pre>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="truncate font-mono text-xs text-neutral-500 dark:text-neutral-400 text-xs" dir="ltr">
-                                                        <span data-tippy-content="vendor\laravel\framework\src\Illuminate\Database\Query\Processors\MySqlProcessor.php:35">
-                                                            vendor\laravel\framework\src\Illuminate\Database\Query\Processors\MySqlProcessor.php<span class="text-neutral-500">:35</span>
+                                                        <span data-tippy-content="vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:4158">
+                                                            vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php<span class="text-neutral-500">:4158</span>
                                                         </span>
                                                     </div>
                                                 </div>
@@ -4980,25 +4728,25 @@
                                                     <div class="flex">
                                                         <div x-data="{ highlightedCode: null }" x-init="
         highlightedCode = window.highlight(
-            'Illuminate\\Database\\Query\\Processors\\MySqlProcessor-\u003EprocessInsertGetId(object(Illuminate\\Database\\Query\\Builder), string, array, string)',
+            'Illuminate\\Database\\Query\\Builder-\u003Einsert(array)',
             'php',
             true,
             false,
             1,
             null
         );
-    " class="text-xs min-w-0" data-tippy-content="Illuminate\Database\Query\Processors\MySqlProcessor-&gt;processInsertGetId(object(Illuminate\Database\Query\Builder), string, array, string)">
+    " class="text-xs min-w-0" data-tippy-content="Illuminate\Database\Query\Builder-&gt;insert(array)">
                                                             <div x-cloak x-html="highlightedCode"></div>
                                                             <div x-show="!highlightedCode">
                                                                 <pre class="truncate">
-                                                                    <code>Illuminate\Database\Query\Processors\MySqlProcessor-&gt;processInsertGetId(object(Illuminate\Database\Query\Builder), string, array, string)</code>
+                                                                    <code>Illuminate\Database\Query\Builder-&gt;insert(array)</code>
                                                                 </pre>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="truncate font-mono text-xs text-neutral-500 dark:text-neutral-400 text-xs" dir="ltr">
-                                                        <span data-tippy-content="vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:4251">
-                                                            vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php<span class="text-neutral-500">:4251</span>
+                                                        <span data-tippy-content="vendor\laravel\framework\src\Illuminate\Database\Eloquent\Relations\Concerns\InteractsWithPivotTable.php:345">
+                                                            vendor\laravel\framework\src\Illuminate\Database\Eloquent\Relations\Concerns\InteractsWithPivotTable.php<span class="text-neutral-500">:345</span>
                                                         </span>
                                                     </div>
                                                 </div>
@@ -5008,277 +4756,25 @@
                                                     <div class="flex">
                                                         <div x-data="{ highlightedCode: null }" x-init="
         highlightedCode = window.highlight(
-            'Illuminate\\Database\\Query\\Builder-\u003EinsertGetId(array, string)',
+            'Illuminate\\Database\\Eloquent\\Relations\\BelongsToMany-\u003Eattach(object(App\\Models\\Occupation), array, boolean)',
             'php',
             true,
             false,
             1,
             null
         );
-    " class="text-xs min-w-0" data-tippy-content="Illuminate\Database\Query\Builder-&gt;insertGetId(array, string)">
+    " class="text-xs min-w-0" data-tippy-content="Illuminate\Database\Eloquent\Relations\BelongsToMany-&gt;attach(object(App\Models\Occupation), array, boolean)">
                                                             <div x-cloak x-html="highlightedCode"></div>
                                                             <div x-show="!highlightedCode">
                                                                 <pre class="truncate">
-                                                                    <code>Illuminate\Database\Query\Builder-&gt;insertGetId(array, string)</code>
+                                                                    <code>Illuminate\Database\Eloquent\Relations\BelongsToMany-&gt;attach(object(App\Models\Occupation), array, boolean)</code>
                                                                 </pre>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="truncate font-mono text-xs text-neutral-500 dark:text-neutral-400 text-xs" dir="ltr">
-                                                        <span data-tippy-content="vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:2271">
-                                                            vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php<span class="text-neutral-500">:2271</span>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="flex flex-col divide-y divide-neutral-200 dark:divide-white/5">
-                                                <div class="grid gap-3 p-4 bg-neutral-50 dark:bg-transparent overflow-x-auto rounded-lg">
-                                                    <div class="flex">
-                                                        <div x-data="{ highlightedCode: null }" x-init="
-        highlightedCode = window.highlight(
-            'Illuminate\\Database\\Eloquent\\Builder-\u003E__call(string, array)',
-            'php',
-            true,
-            false,
-            1,
-            null
-        );
-    " class="text-xs min-w-0" data-tippy-content="Illuminate\Database\Eloquent\Builder-&gt;__call(string, array)">
-                                                            <div x-cloak x-html="highlightedCode"></div>
-                                                            <div x-show="!highlightedCode">
-                                                                <pre class="truncate">
-                                                                    <code>Illuminate\Database\Eloquent\Builder-&gt;__call(string, array)</code>
-                                                                </pre>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="truncate font-mono text-xs text-neutral-500 dark:text-neutral-400 text-xs" dir="ltr">
-                                                        <span data-tippy-content="vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1660">
-                                                            vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php<span class="text-neutral-500">:1660</span>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="flex flex-col divide-y divide-neutral-200 dark:divide-white/5">
-                                                <div class="grid gap-3 p-4 bg-neutral-50 dark:bg-transparent overflow-x-auto rounded-lg">
-                                                    <div class="flex">
-                                                        <div x-data="{ highlightedCode: null }" x-init="
-        highlightedCode = window.highlight(
-            'Illuminate\\Database\\Eloquent\\Model-\u003EinsertAndSetId(object(Illuminate\\Database\\Eloquent\\Builder), array)',
-            'php',
-            true,
-            false,
-            1,
-            null
-        );
-    " class="text-xs min-w-0" data-tippy-content="Illuminate\Database\Eloquent\Model-&gt;insertAndSetId(object(Illuminate\Database\Eloquent\Builder), array)">
-                                                            <div x-cloak x-html="highlightedCode"></div>
-                                                            <div x-show="!highlightedCode">
-                                                                <pre class="truncate">
-                                                                    <code>Illuminate\Database\Eloquent\Model-&gt;insertAndSetId(object(Illuminate\Database\Eloquent\Builder), array)</code>
-                                                                </pre>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="truncate font-mono text-xs text-neutral-500 dark:text-neutral-400 text-xs" dir="ltr">
-                                                        <span data-tippy-content="vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1576">
-                                                            vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php<span class="text-neutral-500">:1576</span>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="flex flex-col divide-y divide-neutral-200 dark:divide-white/5">
-                                                <div class="grid gap-3 p-4 bg-neutral-50 dark:bg-transparent overflow-x-auto rounded-lg">
-                                                    <div class="flex">
-                                                        <div x-data="{ highlightedCode: null }" x-init="
-        highlightedCode = window.highlight(
-            'Illuminate\\Database\\Eloquent\\Model-\u003EperformInsert(object(Illuminate\\Database\\Eloquent\\Builder))',
-            'php',
-            true,
-            false,
-            1,
-            null
-        );
-    " class="text-xs min-w-0" data-tippy-content="Illuminate\Database\Eloquent\Model-&gt;performInsert(object(Illuminate\Database\Eloquent\Builder))">
-                                                            <div x-cloak x-html="highlightedCode"></div>
-                                                            <div x-show="!highlightedCode">
-                                                                <pre class="truncate">
-                                                                    <code>Illuminate\Database\Eloquent\Model-&gt;performInsert(object(Illuminate\Database\Eloquent\Builder))</code>
-                                                                </pre>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="truncate font-mono text-xs text-neutral-500 dark:text-neutral-400 text-xs" dir="ltr">
-                                                        <span data-tippy-content="vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1380">
-                                                            vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php<span class="text-neutral-500">:1380</span>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="flex flex-col divide-y divide-neutral-200 dark:divide-white/5">
-                                                <div class="grid gap-3 p-4 bg-neutral-50 dark:bg-transparent overflow-x-auto rounded-lg">
-                                                    <div class="flex">
-                                                        <div x-data="{ highlightedCode: null }" x-init="
-        highlightedCode = window.highlight(
-            'Illuminate\\Database\\Eloquent\\Model-\u003Esave()',
-            'php',
-            true,
-            false,
-            1,
-            null
-        );
-    " class="text-xs min-w-0" data-tippy-content="Illuminate\Database\Eloquent\Model-&gt;save()">
-                                                            <div x-cloak x-html="highlightedCode"></div>
-                                                            <div x-show="!highlightedCode">
-                                                                <pre class="truncate">
-                                                                    <code>Illuminate\Database\Eloquent\Model-&gt;save()</code>
-                                                                </pre>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="truncate font-mono text-xs text-neutral-500 dark:text-neutral-400 text-xs" dir="ltr">
-                                                        <span data-tippy-content="vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1225">
-                                                            vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php<span class="text-neutral-500">:1225</span>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="flex flex-col divide-y divide-neutral-200 dark:divide-white/5">
-                                                <div class="grid gap-3 p-4 bg-neutral-50 dark:bg-transparent overflow-x-auto rounded-lg">
-                                                    <div class="flex">
-                                                        <div x-data="{ highlightedCode: null }" x-init="
-        highlightedCode = window.highlight(
-            'Illuminate\\Database\\Eloquent\\Builder-\u003E{closure:Illuminate\\Database\\Eloquent\\Builder::create():1224}(object(App\\Models\\Occupation))',
-            'php',
-            true,
-            false,
-            1,
-            null
-        );
-    " class="text-xs min-w-0" data-tippy-content="Illuminate\Database\Eloquent\Builder-&gt;{closure:Illuminate\Database\Eloquent\Builder::create():1224}(object(App\Models\Occupation))">
-                                                            <div x-cloak x-html="highlightedCode"></div>
-                                                            <div x-show="!highlightedCode">
-                                                                <pre class="truncate">
-                                                                    <code>Illuminate\Database\Eloquent\Builder-&gt;{closure:Illuminate\Database\Eloquent\Builder::create():1224}(object(App\Models\Occupation))</code>
-                                                                </pre>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="truncate font-mono text-xs text-neutral-500 dark:text-neutral-400 text-xs" dir="ltr">
-                                                        <span data-tippy-content="vendor\laravel\framework\src\Illuminate\Support\helpers.php:393">
-                                                            vendor\laravel\framework\src\Illuminate\Support\helpers.php<span class="text-neutral-500">:393</span>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="flex flex-col divide-y divide-neutral-200 dark:divide-white/5">
-                                                <div class="grid gap-3 p-4 bg-neutral-50 dark:bg-transparent overflow-x-auto rounded-lg">
-                                                    <div class="flex">
-                                                        <div x-data="{ highlightedCode: null }" x-init="
-        highlightedCode = window.highlight(
-            'tap(object(App\\Models\\Occupation), object(Closure))',
-            'php',
-            true,
-            false,
-            1,
-            null
-        );
-    " class="text-xs min-w-0" data-tippy-content="tap(object(App\Models\Occupation), object(Closure))">
-                                                            <div x-cloak x-html="highlightedCode"></div>
-                                                            <div x-show="!highlightedCode">
-                                                                <pre class="truncate">
-                                                                    <code>tap(object(App\Models\Occupation), object(Closure))</code>
-                                                                </pre>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="truncate font-mono text-xs text-neutral-500 dark:text-neutral-400 text-xs" dir="ltr">
-                                                        <span data-tippy-content="vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1224">
-                                                            vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php<span class="text-neutral-500">:1224</span>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="flex flex-col divide-y divide-neutral-200 dark:divide-white/5">
-                                                <div class="grid gap-3 p-4 bg-neutral-50 dark:bg-transparent overflow-x-auto rounded-lg">
-                                                    <div class="flex">
-                                                        <div x-data="{ highlightedCode: null }" x-init="
-        highlightedCode = window.highlight(
-            'Illuminate\\Database\\Eloquent\\Builder-\u003Ecreate(array)',
-            'php',
-            true,
-            false,
-            1,
-            null
-        );
-    " class="text-xs min-w-0" data-tippy-content="Illuminate\Database\Eloquent\Builder-&gt;create(array)">
-                                                            <div x-cloak x-html="highlightedCode"></div>
-                                                            <div x-show="!highlightedCode">
-                                                                <pre class="truncate">
-                                                                    <code>Illuminate\Database\Eloquent\Builder-&gt;create(array)</code>
-                                                                </pre>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="truncate font-mono text-xs text-neutral-500 dark:text-neutral-400 text-xs" dir="ltr">
-                                                        <span data-tippy-content="vendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php:23">
-                                                            vendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php<span class="text-neutral-500">:23</span>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="flex flex-col divide-y divide-neutral-200 dark:divide-white/5">
-                                                <div class="grid gap-3 p-4 bg-neutral-50 dark:bg-transparent overflow-x-auto rounded-lg">
-                                                    <div class="flex">
-                                                        <div x-data="{ highlightedCode: null }" x-init="
-        highlightedCode = window.highlight(
-            'Illuminate\\Database\\Eloquent\\Model-\u003EforwardCallTo(object(Illuminate\\Database\\Eloquent\\Builder), string, array)',
-            'php',
-            true,
-            false,
-            1,
-            null
-        );
-    " class="text-xs min-w-0" data-tippy-content="Illuminate\Database\Eloquent\Model-&gt;forwardCallTo(object(Illuminate\Database\Eloquent\Builder), string, array)">
-                                                            <div x-cloak x-html="highlightedCode"></div>
-                                                            <div x-show="!highlightedCode">
-                                                                <pre class="truncate">
-                                                                    <code>Illuminate\Database\Eloquent\Model-&gt;forwardCallTo(object(Illuminate\Database\Eloquent\Builder), string, array)</code>
-                                                                </pre>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="truncate font-mono text-xs text-neutral-500 dark:text-neutral-400 text-xs" dir="ltr">
-                                                        <span data-tippy-content="vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:2807">
-                                                            vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php<span class="text-neutral-500">:2807</span>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="flex flex-col divide-y divide-neutral-200 dark:divide-white/5">
-                                                <div class="grid gap-3 p-4 bg-neutral-50 dark:bg-transparent overflow-x-auto rounded-lg">
-                                                    <div class="flex">
-                                                        <div x-data="{ highlightedCode: null }" x-init="
-        highlightedCode = window.highlight(
-            'Illuminate\\Database\\Eloquent\\Model-\u003E__call(string, array)',
-            'php',
-            true,
-            false,
-            1,
-            null
-        );
-    " class="text-xs min-w-0" data-tippy-content="Illuminate\Database\Eloquent\Model-&gt;__call(string, array)">
-                                                            <div x-cloak x-html="highlightedCode"></div>
-                                                            <div x-show="!highlightedCode">
-                                                                <pre class="truncate">
-                                                                    <code>Illuminate\Database\Eloquent\Model-&gt;__call(string, array)</code>
-                                                                </pre>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="truncate font-mono text-xs text-neutral-500 dark:text-neutral-400 text-xs" dir="ltr">
-                                                        <span data-tippy-content="vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:2823">
-                                                            vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php<span class="text-neutral-500">:2823</span>
+                                                        <span data-tippy-content="vendor\laravel\framework\src\Illuminate\Database\Eloquent\Relations\BelongsToMany.php:1356">
+                                                            vendor\laravel\framework\src\Illuminate\Database\Eloquent\Relations\BelongsToMany.php<span class="text-neutral-500">:1356</span>
                                                         </span>
                                                     </div>
                                                 </div>
@@ -5303,24 +4799,24 @@
                                             <div class="flex flex-1 items-center justify-between gap-6 min-w-0">
                                                 <div x-data="{ highlightedCode: null }" x-init="
         highlightedCode = window.highlight(
-            'Illuminate\\Database\\Eloquent\\Model::__callStatic(string, array)',
+            'Illuminate\\Database\\Eloquent\\Relations\\BelongsToMany-\u003Esave(object(App\\Models\\Occupation))',
             'php',
             true,
             false,
             1,
             null
         );
-    " class="text-xs min-w-0" data-tippy-content="Illuminate\Database\Eloquent\Model::__callStatic(string, array)">
+    " class="text-xs min-w-0" data-tippy-content="Illuminate\Database\Eloquent\Relations\BelongsToMany-&gt;save(object(App\Models\Occupation))">
                                                     <div x-cloak x-html="highlightedCode"></div>
                                                     <div x-show="!highlightedCode">
                                                         <pre class="truncate">
-                                                            <code>Illuminate\Database\Eloquent\Model::__callStatic(string, array)</code>
+                                                            <code>Illuminate\Database\Eloquent\Relations\BelongsToMany-&gt;save(object(App\Models\Occupation))</code>
                                                         </pre>
                                                     </div>
                                                 </div>
                                                 <div class="truncate font-mono text-xs text-neutral-500 dark:text-neutral-400" dir="rtl">
-                                                    <span data-tippy-content="app\Http\Controllers\OccupationController.php:28">
-                                                        app\Http\Controllers\OccupationController.php<span class="text-neutral-500">:28</span>
+                                                    <span data-tippy-content="app\Http\Controllers\EmployeeController.php:37">
+                                                        app\Http\Controllers\EmployeeController.php<span class="text-neutral-500">:37</span>
                                                     </span>
                                                 </div>
                                             </div>
@@ -5357,11 +4853,11 @@
                                         <div class="text-sm rounded-b-lg bg-neutral-50 border-t border-neutral-100 dark:bg-neutral-900 dark:border-white/10" x-show="expanded">
                                             <div x-data="{ highlightedCode: null }" x-init="
         highlightedCode = window.highlight(
-            '        $data=$request-\u003Evalidate([\n            \u0027name\u0027=\u003E[\u0027required\u0027,\u0027unique:occupations\u0027],\n            \u0027color\u0027=\u003E[\u0027required\u0027,\u0027hex_color\u0027]\n        ]);\n\n        Occupation::create($data);\n        \n        return response([\u0027success\u0027=\u003Etrue],200);\n    }\n\n    \/**\n     * Display the specified resource.\n     *\/\n    public function show(Occupation $occupation)\n    {\n        return [\u0027occupation\u0027=\u003E$occupation];\n    }\n',
+            '        ];\n\n        $employee = Employee::create($data);\n        foreach ($request-\u003Evalidated(\u0027selectedOccupations\u0027) as $id) {\n            $temp = Occupation::findOrFail($id);\n            $employee-\u003Eoccupations()-\u003Esave($temp);\n        }\n\n        return response([\u0027success\u0027 =\u003E true], 200);\n    }\n\n    \/**\n     * Display the specified resource.\n     *\/\n    public function show(Employee $employee)\n    {\n        return [\u0027employee\u0027 =\u003E $employee];\n',
             'php',
             false,
             true,
-            23,
+            32,
             5
         );
     " class="overflow-x-auto">
@@ -5370,72 +4866,72 @@
                                                     <pre>
                                                         <code>
                                                             <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
-                                                                <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">23</span>
-                                                                $data=$request-&gt;validate([
-                                                            </span>
-                                                            <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
-                                                                <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">24</span>
-                                                                &#039;name &#039;=&gt;[&#039;required &#039;,&#039;unique:occupations &#039;],
-                                                            </span>
-                                                            <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
-                                                                <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">25</span>
-                                                                &#039;color &#039;=&gt;[&#039;required &#039;,&#039;hex_color &#039;]
-                                                            </span>
-                                                            <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
-                                                                <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">26</span>
-                                                                ]);
-                                                            </span>
-                                                            <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
-                                                                <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">27</span>
-                                                            </span>
-                                                            <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 bg-rose-200! dark:bg-rose-900!">
-                                                                <span class="mr-6 text-neutral-500! dark:text-neutral-600! dark:text-white!">28</span>
-                                                                Occupation::create($data);
-                                                            </span>
-                                                            <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
-                                                                <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">29</span>
-                                                            </span>
-                                                            <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
-                                                                <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">30</span>
-                                                                return response([&#039;success &#039;=&gt;true],200);
-                                                            </span>
-                                                            <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
-                                                                <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">31</span>
-                                                                }
-                                                            </span>
-                                                            <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
                                                                 <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">32</span>
+                                                                ];
                                                             </span>
                                                             <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
                                                                 <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">33</span>
-                                                                /**
                                                             </span>
                                                             <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
                                                                 <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">34</span>
-                                                                * Display the specified resource.
+                                                                $employee = Employee::create($data);
                                                             </span>
                                                             <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
                                                                 <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">35</span>
-                                                                */
+                                                                foreach ($request-&gt;validated(&#039;selectedOccupations &#039;) as $id) {
                                                             </span>
                                                             <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
                                                                 <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">36</span>
-                                                                public function show(Occupation $occupation)
+                                                                $temp = Occupation::findOrFail($id);
                                                             </span>
-                                                            <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
-                                                                <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">37</span>
-                                                                {
+                                                            <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 bg-rose-200! dark:bg-rose-900!">
+                                                                <span class="mr-6 text-neutral-500! dark:text-neutral-600! dark:text-white!">37</span>
+                                                                $employee-&gt;occupations()-&gt;save($temp);
                                                             </span>
                                                             <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
                                                                 <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">38</span>
-                                                                return [&#039;occupation &#039;=&gt;$occupation];
-                                                            </span>
-                                                            <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
-                                                                <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">39</span>
                                                                 }
                                                             </span>
                                                             <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
+                                                                <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">39</span>
+                                                            </span>
+                                                            <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
                                                                 <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">40</span>
+                                                                return response([&#039;success &#039;=&gt;true], 200);
+                                                            </span>
+                                                            <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
+                                                                <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">41</span>
+                                                                }
+                                                            </span>
+                                                            <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
+                                                                <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">42</span>
+                                                            </span>
+                                                            <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
+                                                                <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">43</span>
+                                                                /**
+                                                            </span>
+                                                            <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
+                                                                <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">44</span>
+                                                                * Display the specified resource.
+                                                            </span>
+                                                            <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
+                                                                <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">45</span>
+                                                                */
+                                                            </span>
+                                                            <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
+                                                                <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">46</span>
+                                                                public function show(Employee $employee)
+                                                            </span>
+                                                            <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
+                                                                <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">47</span>
+                                                                {
+                                                            </span>
+                                                            <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
+                                                                <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">48</span>
+                                                                return [&#039;employee &#039;=&gt;$employee];
+                                                            </span>
+                                                            <span class="block px-4 py-1 h-7 even:bg-white odd:bg-white/2 even:dark:bg-white/2 odd:dark:bg-white/4 ">
+                                                                <span class="mr-6 text-neutral-500! dark:text-neutral-600! ">49</span>
                                                             </span>
                                                         </code>
                                                     </pre>
@@ -5500,18 +4996,18 @@
                                                     <div class="flex">
                                                         <div x-data="{ highlightedCode: null }" x-init="
         highlightedCode = window.highlight(
-            'App\\Http\\Controllers\\OccupationController-\u003Estore(object(Illuminate\\Http\\Request))',
+            'App\\Http\\Controllers\\EmployeeController-\u003Estore(object(App\\Http\\Requests\\StoreEmployeeRequest))',
             'php',
             true,
             false,
             1,
             null
         );
-    " class="text-xs min-w-0" data-tippy-content="App\Http\Controllers\OccupationController-&gt;store(object(Illuminate\Http\Request))">
+    " class="text-xs min-w-0" data-tippy-content="App\Http\Controllers\EmployeeController-&gt;store(object(App\Http\Requests\StoreEmployeeRequest))">
                                                             <div x-cloak x-html="highlightedCode"></div>
                                                             <div x-show="!highlightedCode">
                                                                 <pre class="truncate">
-                                                                    <code>App\Http\Controllers\OccupationController-&gt;store(object(Illuminate\Http\Request))</code>
+                                                                    <code>App\Http\Controllers\EmployeeController-&gt;store(object(App\Http\Requests\StoreEmployeeRequest))</code>
                                                                 </pre>
                                                             </div>
                                                         </div>
@@ -5528,18 +5024,18 @@
                                                     <div class="flex">
                                                         <div x-data="{ highlightedCode: null }" x-init="
         highlightedCode = window.highlight(
-            'Illuminate\\Routing\\ControllerDispatcher-\u003Edispatch(object(Illuminate\\Routing\\Route), object(App\\Http\\Controllers\\OccupationController), string)',
+            'Illuminate\\Routing\\ControllerDispatcher-\u003Edispatch(object(Illuminate\\Routing\\Route), object(App\\Http\\Controllers\\EmployeeController), string)',
             'php',
             true,
             false,
             1,
             null
         );
-    " class="text-xs min-w-0" data-tippy-content="Illuminate\Routing\ControllerDispatcher-&gt;dispatch(object(Illuminate\Routing\Route), object(App\Http\Controllers\OccupationController), string)">
+    " class="text-xs min-w-0" data-tippy-content="Illuminate\Routing\ControllerDispatcher-&gt;dispatch(object(Illuminate\Routing\Route), object(App\Http\Controllers\EmployeeController), string)">
                                                             <div x-cloak x-html="highlightedCode"></div>
                                                             <div x-show="!highlightedCode">
                                                                 <pre class="truncate">
-                                                                    <code>Illuminate\Routing\ControllerDispatcher-&gt;dispatch(object(Illuminate\Routing\Route), object(App\Http\Controllers\OccupationController), string)</code>
+                                                                    <code>Illuminate\Routing\ControllerDispatcher-&gt;dispatch(object(Illuminate\Routing\Route), object(App\Http\Controllers\EmployeeController), string)</code>
                                                                 </pre>
                                                             </div>
                                                         </div>
@@ -7054,7 +6550,7 @@
                     </div>
                 </div>
                 <div class="flex flex-col gap-2.5 bg-neutral-50 dark:bg-white/1 border border-neutral-200 dark:border-neutral-800 rounded-xl p-2.5 shadow-xs" x-data="{
-        totalQueries: 5,
+        totalQueries: 7,
         currentPage: 1,
         perPage: 10,
         get totalPages() {
@@ -7166,7 +6662,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="text-neutral-500 dark:text-neutral-200 text-right flex-shrink-0">17.43ms</div>
+                            <div class="text-neutral-500 dark:text-neutral-200 text-right flex-shrink-0">23.29ms</div>
                         </div>
                         <div class="border border-neutral-200 dark:border-none bg-white dark:bg-white/[3%] rounded-md h-10 flex items-center justify-between gap-4 px-4 text-xs font-mono shadow-xs" x-show="Math.floor(1 / perPage) === (currentPage - 1)">
                             <div class="flex items-center gap-2 truncate">
@@ -7194,7 +6690,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="text-neutral-500 dark:text-neutral-200 text-right flex-shrink-0">0.28ms</div>
+                            <div class="text-neutral-500 dark:text-neutral-200 text-right flex-shrink-0">0.31ms</div>
                         </div>
                         <div class="border border-neutral-200 dark:border-none bg-white dark:bg-white/[3%] rounded-md h-10 flex items-center justify-between gap-4 px-4 text-xs font-mono shadow-xs" x-show="Math.floor(2 / perPage) === (currentPage - 1)">
                             <div class="flex items-center gap-2 truncate">
@@ -7206,23 +6702,23 @@
                                 </div>
                                 <div x-data="{ highlightedCode: null }" x-init="
         highlightedCode = window.highlight(
-            'select * from `sessions` where `id` = \u0027ZRkEwBpvjSVC35zchRG5kGHqdXqwmztM0r6NTrmR\u0027 limit 1',
+            'select * from `sessions` where `id` = \u0027e9jJ968lFGwaEOFBmmKldg36Bzb6PQ6ioR1EYE8B\u0027 limit 1',
             'sql',
             true,
             false,
             1,
             null
         );
-    " class="min-w-0" data-tippy-content="select * from `sessions` where `id` = &#039;ZRkEwBpvjSVC35zchRG5kGHqdXqwmztM0r6NTrmR&#039; limit 1">
+    " class="min-w-0" data-tippy-content="select * from `sessions` where `id` = &#039;e9jJ968lFGwaEOFBmmKldg36Bzb6PQ6ioR1EYE8B&#039; limit 1">
                                     <div x-cloak x-html="highlightedCode"></div>
                                     <div x-show="!highlightedCode">
                                         <pre class="truncate">
-                                            <code>select * from `sessions` where `id` = &#039;ZRkEwBpvjSVC35zchRG5kGHqdXqwmztM0r6NTrmR &#039;limit 1</code>
+                                            <code>select * from `sessions` where `id` = &#039;e9jJ968lFGwaEOFBmmKldg36Bzb6PQ6ioR1EYE8B &#039;limit 1</code>
                                         </pre>
                                     </div>
                                 </div>
                             </div>
-                            <div class="text-neutral-500 dark:text-neutral-200 text-right flex-shrink-0">0.38ms</div>
+                            <div class="text-neutral-500 dark:text-neutral-200 text-right flex-shrink-0">0.33ms</div>
                         </div>
                         <div class="border border-neutral-200 dark:border-none bg-white dark:bg-white/[3%] rounded-md h-10 flex items-center justify-between gap-4 px-4 text-xs font-mono shadow-xs" x-show="Math.floor(3 / perPage) === (currentPage - 1)">
                             <div class="flex items-center gap-2 truncate">
@@ -7234,25 +6730,81 @@
                                 </div>
                                 <div x-data="{ highlightedCode: null }" x-init="
         highlightedCode = window.highlight(
-            'select count(*) as `aggregate` from `occupations` where `name` = \u0027sa\u0027',
+            'select count(*) as `aggregate` from `occupations` where `id` = \u00272\u0027',
             'sql',
             true,
             false,
             1,
             null
         );
-    " class="min-w-0" data-tippy-content="select count(*) as `aggregate` from `occupations` where `name` = &#039;sa&#039;">
+    " class="min-w-0" data-tippy-content="select count(*) as `aggregate` from `occupations` where `id` = &#039;2&#039;">
                                     <div x-cloak x-html="highlightedCode"></div>
                                     <div x-show="!highlightedCode">
                                         <pre class="truncate">
-                                            <code>select count(*) as `aggregate` from `occupations` where `name` = &#039;sa &#039;</code>
+                                            <code>select count(*) as `aggregate` from `occupations` where `id` = &#039;2 &#039;</code>
                                         </pre>
                                     </div>
                                 </div>
                             </div>
-                            <div class="text-neutral-500 dark:text-neutral-200 text-right flex-shrink-0">0.35ms</div>
+                            <div class="text-neutral-500 dark:text-neutral-200 text-right flex-shrink-0">2.53ms</div>
                         </div>
                         <div class="border border-neutral-200 dark:border-none bg-white dark:bg-white/[3%] rounded-md h-10 flex items-center justify-between gap-4 px-4 text-xs font-mono shadow-xs" x-show="Math.floor(4 / perPage) === (currentPage - 1)">
+                            <div class="flex items-center gap-2 truncate">
+                                <div class="flex items-center gap-2">
+                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 text-neutral-500 dark:text-neutral-400">
+                                        <path d="M9.75 2.56944C9.75 3.29815 8.07107 3.88889 6 3.88889C3.92893 3.88889 2.25 3.29815 2.25 2.56944M9.75 2.56944C9.75 1.84074 8.07107 1.25 6 1.25C3.92893 1.25 2.25 1.84074 2.25 2.56944M9.75 2.56944V9.43056C9.75 10.1593 8.07107 10.75 6 10.75C3.92893 10.75 2.25 10.1593 2.25 9.43056V2.56944M9.75 5.94434C9.75 6.67304 8.07107 7.26378 6 7.26378C3.92893 7.26378 2.25 6.67304 2.25 5.94434" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    <span class="text-neutral-500 dark:text-neutral-400">mysql</span>
+                                </div>
+                                <div x-data="{ highlightedCode: null }" x-init="
+        highlightedCode = window.highlight(
+            'insert into `employees` (`name`, `age`, `rating`, `image`, `updated_at`, `created_at`) values (\u0027s\u0027, \u002723\u0027, \u00273\u0027, \u0027employees\/U3GPYFuiAAwE4632goApxJLyYhO1WKi3ZWbah5YS.jpg\u0027, \u00272026-08-12 00:50:54\u0027, \u00272026-08-12 00:50:54\u0027)',
+            'sql',
+            true,
+            false,
+            1,
+            null
+        );
+    " class="min-w-0" data-tippy-content="insert into `employees` (`name`, `age`, `rating`, `image`, `updated_at`, `created_at`) values (&#039;s&#039;, &#039;23&#039;, &#039;3&#039;, &#039;employees/U3GPYFuiAAwE4632goApxJLyYhO1WKi3ZWbah5YS.jpg&#039;, &#039;2026-08-12 00:50:54&#039;, &#039;2026-08-12 00:50:54&#039;)">
+                                    <div x-cloak x-html="highlightedCode"></div>
+                                    <div x-show="!highlightedCode">
+                                        <pre class="truncate">
+                                            <code>insert into `employees` (`name`, `age`, `rating`, `image`, `updated_at`, `created_at`) values (&#039;s &#039;, &#039;23 &#039;, &#039;3 &#039;, &#039;employees/U3GPYFuiAAwE4632goApxJLyYhO1WKi3ZWbah5YS.jpg &#039;, &#039;2026-08-12 00:50:54 &#039;, &#039;2026-08-12 00:50:54 &#039;)</code>
+                                        </pre>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-neutral-500 dark:text-neutral-200 text-right flex-shrink-0">11.8ms</div>
+                        </div>
+                        <div class="border border-neutral-200 dark:border-none bg-white dark:bg-white/[3%] rounded-md h-10 flex items-center justify-between gap-4 px-4 text-xs font-mono shadow-xs" x-show="Math.floor(5 / perPage) === (currentPage - 1)">
+                            <div class="flex items-center gap-2 truncate">
+                                <div class="flex items-center gap-2">
+                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 text-neutral-500 dark:text-neutral-400">
+                                        <path d="M9.75 2.56944C9.75 3.29815 8.07107 3.88889 6 3.88889C3.92893 3.88889 2.25 3.29815 2.25 2.56944M9.75 2.56944C9.75 1.84074 8.07107 1.25 6 1.25C3.92893 1.25 2.25 1.84074 2.25 2.56944M9.75 2.56944V9.43056C9.75 10.1593 8.07107 10.75 6 10.75C3.92893 10.75 2.25 10.1593 2.25 9.43056V2.56944M9.75 5.94434C9.75 6.67304 8.07107 7.26378 6 7.26378C3.92893 7.26378 2.25 6.67304 2.25 5.94434" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    <span class="text-neutral-500 dark:text-neutral-400">mysql</span>
+                                </div>
+                                <div x-data="{ highlightedCode: null }" x-init="
+        highlightedCode = window.highlight(
+            'select * from `occupations` where `occupations`.`id` = \u00272\u0027 limit 1',
+            'sql',
+            true,
+            false,
+            1,
+            null
+        );
+    " class="min-w-0" data-tippy-content="select * from `occupations` where `occupations`.`id` = &#039;2&#039; limit 1">
+                                    <div x-cloak x-html="highlightedCode"></div>
+                                    <div x-show="!highlightedCode">
+                                        <pre class="truncate">
+                                            <code>select * from `occupations` where `occupations`.`id` = &#039;2 &#039;limit 1</code>
+                                        </pre>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-neutral-500 dark:text-neutral-200 text-right flex-shrink-0">0.54ms</div>
+                        </div>
+                        <div class="border border-neutral-200 dark:border-none bg-white dark:bg-white/[3%] rounded-md h-10 flex items-center justify-between gap-4 px-4 text-xs font-mono shadow-xs" x-show="Math.floor(6 / perPage) === (currentPage - 1)">
                             <div class="flex items-center gap-2 truncate">
                                 <div class="flex items-center gap-2">
                                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 text-neutral-500 dark:text-neutral-400">
@@ -7278,7 +6830,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="text-neutral-500 dark:text-neutral-200 text-right flex-shrink-0">0.48ms</div>
+                            <div class="text-neutral-500 dark:text-neutral-200 text-right flex-shrink-0">0.71ms</div>
                         </div>
                     </div>
                     <!-- Pagination Controls -->
@@ -7334,7 +6886,7 @@
                             <div class="uppercase text-neutral-500 dark:text-neutral-400 shrink-0">cookie</div>
                             <div class="min-w-6 grow h-3 border-b-2 border-dotted border-neutral-300 dark:border-white/20"></div>
                             <div class="truncate text-neutral-900 dark:text-white">
-                                <span data-tippy-content="PHPDEBUGBAR_STACK_DATA=%5B%5D; XSRF-TOKEN=eyJpdiI6IkVOZUFzQW9sNkJydTAyVjFQTzdxcEE9PSIsInZhbHVlIjoiWHJaTFNaWSsycEtyVHlvZ3lOVGc5TDhrT3U2SlQvZk8ybHV5SkRhWGpaRGJQUVBSUGxZNk4rbjNUMkpSRGR3NzFMcDRmR0hkK0puaUsveDlsc0pyQ0RYUUlDSEF4ODdXUml3RDJKUE5HZHRPczgwRWFGVk1hazN4V2hOeW40bU4iLCJtYWMiOiI2YmMwYzM4NTc1MjQ0Y2NmOWMzN2JjM2QyZjdkZTM3ZmQ5NmRiMWM0YmQ1Mzk2MmRjOTQ4NjI3NDM2YTc4ZDMzIiwidGFnIjoiIn0%3D; laravel-session=eyJpdiI6IlF1dnNHRG1RUG8yT3IyOHBrSDBLNFE9PSIsInZhbHVlIjoidkx1Mnh4V2UyK3liS3JzY2tJdjBuRnVmbVU2bmVBUGQ0R3RYYlRUdFhwVTNWWFJvVlVSZkJUc3JDRkpTdTJydWsyZ1NxN0J4bUdGcDgrZS93REdZd0RyWVdmTWl0eFhFbGdmcGJVcXRCWTNOTnpFN3NyTTVHSGhZdCt0dTFDeEUiLCJtYWMiOiI3ZjJmMzA3ZjhlZTc4NjQ1M2NhMTFkM2IxMGFhY2MyOTFjMTBmNTU3NDUxMGJmNmQxMDhkZDU0MDBjZDljZjg0IiwidGFnIjoiIn0%3D">PHPDEBUGBAR_STACK_DATA=%5B%5D; XSRF-TOKEN=eyJpdiI6IkVOZUFzQW9sNkJydTAyVjFQTzdxcEE9PSIsInZhbHVlIjoiWHJaTFNaWSsycEtyVHlvZ3lOVGc5TDhrT3U2SlQvZk8ybHV5SkRhWGpaRGJQUVBSUGxZNk4rbjNUMkpSRGR3NzFMcDRmR0hkK0puaUsveDlsc0pyQ0RYUUlDSEF4ODdXUml3RDJKUE5HZHRPczgwRWFGVk1hazN4V2hOeW40bU4iLCJtYWMiOiI2YmMwYzM4NTc1MjQ0Y2NmOWMzN2JjM2QyZjdkZTM3ZmQ5NmRiMWM0YmQ1Mzk2MmRjOTQ4NjI3NDM2YTc4ZDMzIiwidGFnIjoiIn0%3D; laravel-session=eyJpdiI6IlF1dnNHRG1RUG8yT3IyOHBrSDBLNFE9PSIsInZhbHVlIjoidkx1Mnh4V2UyK3liS3JzY2tJdjBuRnVmbVU2bmVBUGQ0R3RYYlRUdFhwVTNWWFJvVlVSZkJUc3JDRkpTdTJydWsyZ1NxN0J4bUdGcDgrZS93REdZd0RyWVdmTWl0eFhFbGdmcGJVcXRCWTNOTnpFN3NyTTVHSGhZdCt0dTFDeEUiLCJtYWMiOiI3ZjJmMzA3ZjhlZTc4NjQ1M2NhMTFkM2IxMGFhY2MyOTFjMTBmNTU3NDUxMGJmNmQxMDhkZDU0MDBjZDljZjg0IiwidGFnIjoiIn0%3D
+                                <span data-tippy-content="PHPDEBUGBAR_STACK_DATA=%5B%5D; XSRF-TOKEN=eyJpdiI6InhjSE5FRDVzeHdKbHU1T0I4dTNaNHc9PSIsInZhbHVlIjoib1BNQzlEMnBSTVlIRmFFLzJvN0NrdW44N0t5UXNPdERQdVVQdXdsbDNFWFBZTDhTVXFUeFp5Qlc4N3g5TTM2azZvZ0ttZmU2OWFxU0hTSy94MFpLK3RkTzc3QUFpOGJkQ2NFZTNqWldWdS9UdXBjMnJ0SUphOFVteDlBOFRKdWYiLCJtYWMiOiI5MGRhY2E3N2NkODgyYTg3NjdmOTY1ZDc1YzI3ZGFmMWMyN2UxYTdmOWU0NWYwZDdjYmE3NGRlMzU4ODViOWJiIiwidGFnIjoiIn0%3D; laravel-session=eyJpdiI6ImxoOVN1ejZ2S2sxNG5VcUNVcWdNV0E9PSIsInZhbHVlIjoiRjRHL0FSWXYvcC9QMXlqVmJRWlgreTQ4aU9aaUZnYkNZV0Z0aktxWjVkUXNtTkZvVVRtb244Q2c5d2w2SDVRY2QydmhBODFLOTNRYlZrR0FnTGJCVjZQbFJQSGFPRGFZU081Ny9uZVYzV2V3SkxoOVFtTFJ2enRNbHhzTkZITHoiLCJtYWMiOiIyZjkwOTBjNWZlZjVkMjg5MmM5ZjkyOTViODRjMDdhNjJkZTJhNDNiNzMxNjdlMDZhOTc3OTYwN2M1ZDdiMjRlIiwidGFnIjoiIn0%3D">PHPDEBUGBAR_STACK_DATA=%5B%5D; XSRF-TOKEN=eyJpdiI6InhjSE5FRDVzeHdKbHU1T0I4dTNaNHc9PSIsInZhbHVlIjoib1BNQzlEMnBSTVlIRmFFLzJvN0NrdW44N0t5UXNPdERQdVVQdXdsbDNFWFBZTDhTVXFUeFp5Qlc4N3g5TTM2azZvZ0ttZmU2OWFxU0hTSy94MFpLK3RkTzc3QUFpOGJkQ2NFZTNqWldWdS9UdXBjMnJ0SUphOFVteDlBOFRKdWYiLCJtYWMiOiI5MGRhY2E3N2NkODgyYTg3NjdmOTY1ZDc1YzI3ZGFmMWMyN2UxYTdmOWU0NWYwZDdjYmE3NGRlMzU4ODViOWJiIiwidGFnIjoiIn0%3D; laravel-session=eyJpdiI6ImxoOVN1ejZ2S2sxNG5VcUNVcWdNV0E9PSIsInZhbHVlIjoiRjRHL0FSWXYvcC9QMXlqVmJRWlgreTQ4aU9aaUZnYkNZV0Z0aktxWjVkUXNtTkZvVVRtb244Q2c5d2w2SDVRY2QydmhBODFLOTNRYlZrR0FnTGJCVjZQbFJQSGFPRGFZU081Ny9uZVYzV2V3SkxoOVFtTFJ2enRNbHhzTkZITHoiLCJtYWMiOiIyZjkwOTBjNWZlZjVkMjg5MmM5ZjkyOTViODRjMDdhNjJkZTJhNDNiNzMxNjdlMDZhOTc3OTYwN2M1ZDdiMjRlIiwidGFnIjoiIn0%3D
                 </span>
                             </div>
                         </div>
@@ -7374,7 +6926,7 @@
                             <div class="uppercase text-neutral-500 dark:text-neutral-400 shrink-0">content-type</div>
                             <div class="min-w-6 grow h-3 border-b-2 border-dotted border-neutral-300 dark:border-white/20"></div>
                             <div class="truncate text-neutral-900 dark:text-white">
-                                <span data-tippy-content="application/json">application/json
+                                <span data-tippy-content="multipart/form-data; boundary=----WebKitFormBoundaryHZS0k3hAjEY7VVfr">multipart/form-data; boundary=----WebKitFormBoundaryHZS0k3hAjEY7VVfr
                 </span>
                             </div>
                         </div>
@@ -7382,7 +6934,7 @@
                             <div class="uppercase text-neutral-500 dark:text-neutral-400 shrink-0">accept</div>
                             <div class="min-w-6 grow h-3 border-b-2 border-dotted border-neutral-300 dark:border-white/20"></div>
                             <div class="truncate text-neutral-900 dark:text-white">
-                                <span data-tippy-content="application/json, text/plain, */*">application/json, text/plain, */*
+                                <span data-tippy-content="application/json">application/json
                 </span>
                             </div>
                         </div>
@@ -7398,7 +6950,7 @@
                             <div class="uppercase text-neutral-500 dark:text-neutral-400 shrink-0">x-xsrf-token</div>
                             <div class="min-w-6 grow h-3 border-b-2 border-dotted border-neutral-300 dark:border-white/20"></div>
                             <div class="truncate text-neutral-900 dark:text-white">
-                                <span data-tippy-content="eyJpdiI6IkVOZUFzQW9sNkJydTAyVjFQTzdxcEE9PSIsInZhbHVlIjoiWHJaTFNaWSsycEtyVHlvZ3lOVGc5TDhrT3U2SlQvZk8ybHV5SkRhWGpaRGJQUVBSUGxZNk4rbjNUMkpSRGR3NzFMcDRmR0hkK0puaUsveDlsc0pyQ0RYUUlDSEF4ODdXUml3RDJKUE5HZHRPczgwRWFGVk1hazN4V2hOeW40bU4iLCJtYWMiOiI2YmMwYzM4NTc1MjQ0Y2NmOWMzN2JjM2QyZjdkZTM3ZmQ5NmRiMWM0YmQ1Mzk2MmRjOTQ4NjI3NDM2YTc4ZDMzIiwidGFnIjoiIn0=">eyJpdiI6IkVOZUFzQW9sNkJydTAyVjFQTzdxcEE9PSIsInZhbHVlIjoiWHJaTFNaWSsycEtyVHlvZ3lOVGc5TDhrT3U2SlQvZk8ybHV5SkRhWGpaRGJQUVBSUGxZNk4rbjNUMkpSRGR3NzFMcDRmR0hkK0puaUsveDlsc0pyQ0RYUUlDSEF4ODdXUml3RDJKUE5HZHRPczgwRWFGVk1hazN4V2hOeW40bU4iLCJtYWMiOiI2YmMwYzM4NTc1MjQ0Y2NmOWMzN2JjM2QyZjdkZTM3ZmQ5NmRiMWM0YmQ1Mzk2MmRjOTQ4NjI3NDM2YTc4ZDMzIiwidGFnIjoiIn0=
+                                <span data-tippy-content="eyJpdiI6InhjSE5FRDVzeHdKbHU1T0I4dTNaNHc9PSIsInZhbHVlIjoib1BNQzlEMnBSTVlIRmFFLzJvN0NrdW44N0t5UXNPdERQdVVQdXdsbDNFWFBZTDhTVXFUeFp5Qlc4N3g5TTM2azZvZ0ttZmU2OWFxU0hTSy94MFpLK3RkTzc3QUFpOGJkQ2NFZTNqWldWdS9UdXBjMnJ0SUphOFVteDlBOFRKdWYiLCJtYWMiOiI5MGRhY2E3N2NkODgyYTg3NjdmOTY1ZDc1YzI3ZGFmMWMyN2UxYTdmOWU0NWYwZDdjYmE3NGRlMzU4ODViOWJiIiwidGFnIjoiIn0=">eyJpdiI6InhjSE5FRDVzeHdKbHU1T0I4dTNaNHc9PSIsInZhbHVlIjoib1BNQzlEMnBSTVlIRmFFLzJvN0NrdW44N0t5UXNPdERQdVVQdXdsbDNFWFBZTDhTVXFUeFp5Qlc4N3g5TTM2azZvZ0ttZmU2OWFxU0hTSy94MFpLK3RkTzc3QUFpOGJkQ2NFZTNqWldWdS9UdXBjMnJ0SUphOFVteDlBOFRKdWYiLCJtYWMiOiI5MGRhY2E3N2NkODgyYTg3NjdmOTY1ZDc1YzI3ZGFmMWMyN2UxYTdmOWU0NWYwZDdjYmE3NGRlMzU4ODViOWJiIiwidGFnIjoiIn0=
                 </span>
                             </div>
                         </div>
@@ -7406,7 +6958,7 @@
                             <div class="uppercase text-neutral-500 dark:text-neutral-400 shrink-0">content-length</div>
                             <div class="min-w-6 grow h-3 border-b-2 border-dotted border-neutral-300 dark:border-white/20"></div>
                             <div class="truncate text-neutral-900 dark:text-white">
-                                <span data-tippy-content="31">31
+                                <span data-tippy-content="179308">179308
                 </span>
                             </div>
                         </div>
@@ -7433,7 +6985,7 @@
                     <div class="bg-white dark:bg-white/[2%] border border-neutral-200 dark:border-neutral-800 rounded-md overflow-x-auto p-5 text-sm font-mono shadow-xs">
                         <div x-data="{ highlightedCode: null }" x-init="
         highlightedCode = window.highlight(
-            '{\n    \u0022name\u0022: \u0022sa\u0022,\n    \u0022color\u0022: \u0022#e73636\u0022\n}',
+            '{\n    \u0022name\u0022: \u0022s\u0022,\n    \u0022age\u0022: \u002223\u0022,\n    \u0022rating\u0022: \u00223\u0022,\n    \u0022notes\u0022: null,\n    \u0022selectedOccupations\u0022: [\n        \u00222\u0022\n    ],\n    \u0022image\u0022: {}\n}',
             'json',
             false,
             false,
@@ -7445,8 +6997,14 @@
                             <div x-show="!highlightedCode">
                                 <pre>
                                     <code>{
-    &quot;name &quot;: &quot;sa &quot;,
-    &quot;color &quot;: &quot;#e73636 &quot;}</code>
+    &quot;name &quot;: &quot;s &quot;,
+    &quot;age &quot;: &quot;23 &quot;,
+    &quot;rating &quot;: &quot;3 &quot;,
+    &quot;notes &quot;: null,
+    &quot;selectedOccupations &quot;: [
+        &quot;2 &quot;],
+    &quot;image &quot;: {}
+}</code>
                                 </pre>
                             </div>
                         </div>
@@ -7459,7 +7017,7 @@
                             <div class="uppercase text-neutral-500 dark:text-neutral-400 shrink-0">controller</div>
                             <div class="min-w-6 grow h-3 border-b-2 border-dotted border-neutral-300 dark:border-white/20"></div>
                             <div class="truncate text-neutral-900 dark:text-white">
-                                <span data-tippy-content="App\Http\Controllers\OccupationController@store">App\Http\Controllers\OccupationController@store
+                                <span data-tippy-content="App\Http\Controllers\EmployeeController@store">App\Http\Controllers\EmployeeController@store
                 </span>
                             </div>
                         </div>

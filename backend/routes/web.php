@@ -42,6 +42,7 @@ Route::controller(EmployeeController::class)->group(function(){
     Route::get('/employees','index');
     Route::post('/employees','store');
     Route::get('/employees/{employee}','show');
+    Route::get('/employees/{employee}/image','getImage')->name('employeeImage');
     Route::patch('/employees/{employee}','update');
     Route::delete('/employees/{employee}','destroy');
 })->middleware('auth:sanctum');

@@ -65,7 +65,7 @@ class BookController extends Controller
             ]);
 
             return response(
-                ['redirect' => "/books/{$book->id}", 'success' => true],
+                ['redirect' => "/books/$book->id", 'success' => true],
                 200
             );
         }
