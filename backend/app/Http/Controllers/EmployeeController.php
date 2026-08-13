@@ -15,7 +15,14 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        return Occupation::all()->load('employees');
+        $occupations =  Occupation::all()->load('employees');
+        foreach ($occupations as $occupation) {
+            foreach ($occupation->employees as $employee) {
+                $employee->image=route('employeeImage',[$employee->id]);
+            }
+        }
+
+        return $occupations; 
     }
 
     /**
