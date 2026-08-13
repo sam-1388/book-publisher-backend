@@ -7,7 +7,6 @@ use App\Models\Employee;
 use App\Models\Occupation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Validation\ValidationException;
 
 class EmployeeController extends Controller
 {
@@ -16,7 +15,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        return Employee::all();
+        return Occupation::all()->load('employees');
     }
 
     /**
@@ -58,6 +57,7 @@ class EmployeeController extends Controller
 
         return response([
             ...$employee->except(['image']),
+            'selectedOccupations' => $employee->occupations,
             'image' => route('employeeImage', [$employee->id])
         ], 200);
     }
@@ -79,15 +79,31 @@ class EmployeeController extends Controller
      */
     public function update(StoreEmployeeRequest $request, Employee $employee)
     {
-        $path = Storage::disk('public')->putFile('/employees', request('image'), 'private');
+        if ($request->file('image')!=null) {
 
-        $data = [
-            ...$request->safe()->except('image'),
-            'image' => $path
-        ];
+            Storage::disk('local')->delete($employee->image);
+            $path = Storage::disk('local')->putFile('/employees', request('image'));
+            $data = [
+                ...$request->safe()->except('image', 'selectedOccupations'),
+                'image' => $path
+            ];
+        } else {
+            $data = [
+                ...$request->safe()->except('selectedOccupations'),
+                
+            ];
+        }
+
+        $employee->occupations()->detach();
+        foreach ($request->validated('selectedOccupations') as $id) {
+            $temp = Occupation::findOrFail($id);
+            $employee->occupations()->save($temp);
+        }
+        $employee->save();
+
 
         $employee->update($data);
-        return response(['success' => true], 200);
+        return response(['redirect' => "/employees/$employee->id", 'success' => true], 200);
     }
 
     /**
@@ -96,6 +112,6 @@ class EmployeeController extends Controller
     public function destroy(Employee $employee)
     {
         $employee->deleteOrFail();
-        return response(['usccess' => true], 200);
+        return response(['success' => true], 200);
     }
 }
