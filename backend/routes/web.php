@@ -5,6 +5,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\OccupationController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -53,4 +54,12 @@ Route::controller(OccupationController::class)->group(function(){
     Route::get('/occupations/{occupation}','show');
     Route::patch('/occupations/{occupation}','update');
     Route::delete('/occupations/{occupation}','destroy');
+})->middleware('auth:sanctum');
+
+Route::controller(TaskController::class)->group(function(){
+    Route::get('/tasks','index');
+    Route::post('/tasks','store');
+    Route::get('/tasks/{task}','show');
+    Route::patch('/tasks/{task}','update');
+    Route::delete('/tasks/{task}','destroy');
 })->middleware('auth:sanctum');
