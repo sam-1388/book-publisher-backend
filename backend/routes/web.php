@@ -32,6 +32,7 @@ Route::get('/user', function (Request $request) {
 
 Route::controller(BookController::class)->group(function(){
     Route::get('/books','index');
+    Route::get('/books?{type}','getType');
     Route::post('/books','store');
     Route::get('/books/{book}','show');
     Route::patch('/books/{book}','update');

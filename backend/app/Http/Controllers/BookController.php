@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -25,6 +26,34 @@ class BookController extends Controller
     }
 
 
+    public function getType(string $type)
+    {
+
+        $temp = $this->getCorrectType($type);
+        $temp
+            ? $books = DB::table('books')->where('status', $temp)->get()
+            : $books = Book::all();
+        return $books;
+    }
+
+    private function getCorrectType(string $x)
+    {
+        switch ($x) {
+            case 'translation':
+                return 'need translation';
+            case 'copyEditing':
+                return 'need copyediting';
+            case 'typeSetting':
+                return 'need typesetting';
+            case 'proofReading':
+                return 'need proofReading';
+            case 'printing':
+                return 'ready for printing';
+
+            default:
+                return null;
+        }
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -108,7 +137,7 @@ class BookController extends Controller
                 400
             );
         }
-        
+
         if ($request->hasFile('image')) {
             Storage::disk('public')->delete($book->image);
             $path = Storage::disk('public')->putFile('/images', $validator->safe()->file('image'));

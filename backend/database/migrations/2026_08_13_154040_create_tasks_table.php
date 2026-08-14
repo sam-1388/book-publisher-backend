@@ -1,3 +1,5 @@
+
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -16,10 +18,11 @@ return new class extends Migration
             $table->string('name');
             $table->string('type');
             $table->date('deadline');
-            $table->integer('page_start');
-            $table->integer('page_end');
-            $table->foreignId('book_id')->references('id')->on('books');
-            $table->foreignId('employee_id')->references('id')->on('employees');
+            $table->boolean('finished')->default(true);
+            $table->foreignId('book_id')->references('id')->on('books')->cascadeOnDelete();
+            $table->foreignId('employee_id')->references('id')->on('employees')->cascadeOnDelete();
+            $table->integer('page_start')->nullable();
+            $table->integer('page_end')->nullable();
             $table->text('notes');
             $table->timestamps();
         });
