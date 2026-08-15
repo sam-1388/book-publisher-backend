@@ -6,6 +6,7 @@ use App\Http\Requests\StoreEmployeeRequest;
 use App\Models\Employee;
 use App\Models\Occupation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class EmployeeController extends Controller
@@ -13,17 +14,30 @@ class EmployeeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $occupations =  Occupation::all()->load('employees');
-        foreach ($occupations as $occupation) {
-            foreach ($occupation->employees as $employee) {
-                $employee->image=route('employeeImage',[$employee->id]);
+    public function index(Request $request)
+    {   
+        $requestedOccupation=$request->query('occupation');
+
+        if ($requestedOccupation) {
+
+            $actualOccupation = Occupation::where('name',$requestedOccupation )->firstOrFail();
+            $employees = $actualOccupation->employees;
+            foreach ($employees as $employee) {
+                $employee->image = route('employeeImage', [$employee->id]);
             }
+            return $employees;
         }
 
-        return $occupations; 
+
+        $occupations =  Occupation::with('employees')->get();
+        foreach ($occupations as $occupation) {
+            foreach ($occupation->employees as $employee) {
+                $employee->image = route('employeeImage', [$employee->id]);
+            }
+        }
+        return $occupations;
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -66,7 +80,7 @@ class EmployeeController extends Controller
             ...$employee->except(['image']),
             'selectedOccupations' => $employee->occupations,
             'image' => route('employeeImage', [$employee->id]),
-            'occupationNames'=> $employee->occupations()->pluck('name'),
+            'occupationNames' => $employee->occupations()->pluck('name'),
         ], 200);
     }
 
@@ -87,7 +101,7 @@ class EmployeeController extends Controller
      */
     public function update(StoreEmployeeRequest $request, Employee $employee)
     {
-        if ($request->file('image')!=null) {
+        if ($request->file('image') != null) {
 
             Storage::disk('local')->delete($employee->image);
             $path = Storage::disk('local')->putFile('/employees', request('image'));
@@ -98,7 +112,7 @@ class EmployeeController extends Controller
         } else {
             $data = [
                 ...$request->safe()->except('selectedOccupations'),
-                
+
             ];
         }
 

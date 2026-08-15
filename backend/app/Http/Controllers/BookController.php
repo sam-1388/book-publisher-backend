@@ -10,15 +10,26 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
+use PhpParser\Node\Stmt\TryCatch;
 
 class BookController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $books = Book::all();
+        $status=$request->query('status');
+
+        if ($status) {
+            $temp = $this->getCorrectType($status);
+            $temp
+                ? $books = Book::where('status', $temp)->get()
+                : $books = Book::all();
+        } else {
+            $books = Book::all();
+        }
         foreach ($books as $book) {
             $book->image = url($book->image);
         }
@@ -26,15 +37,7 @@ class BookController extends Controller
     }
 
 
-    public function getType(string $type)
-    {
 
-        $temp = $this->getCorrectType($type);
-        $temp
-            ? $books = DB::table('books')->where('status', $temp)->get()
-            : $books = Book::all();
-        return $books;
-    }
 
     private function getCorrectType(string $x)
     {
@@ -98,6 +101,26 @@ class BookController extends Controller
                 200
             );
         }
+    }
+
+
+    public function updateStatus(Request $request, Book $book)
+    {
+
+        try {
+
+            $request->validate([
+                'bookStatus' => ['required', Rule::in(['need translation', 'need copyEditing', 'need typeSetting', 'need proofReading', 'ready for printing'])]
+            ]);
+        } catch (ValidationException $th) {
+            return response($th->errors(), 422);
+        }
+
+        $book->update([
+            'status' => $request->input('bookStatus')
+        ]);
+        $book->save();
+        return ['success' => true];
     }
 
     /**
