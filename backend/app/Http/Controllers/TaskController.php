@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 use App\Models\Book;
 use App\Models\Employee;
+use App\Rules\OneEmployeeOneTask;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
@@ -30,19 +31,16 @@ class TaskController extends Controller
                 'name' => ['required'],
                 'type' => [Rule::in(['translation', 'proofReading', 'copyEditing', 'typeSetting', 'printing']), 'required'],
                 'deadline' => [Rule::dateTime()->after(today())->format('Y-m-d')],
-                'pagesStart' => ['nullable', 'number', Rule::numeric()->min(1)],
-                'pagesEnd' => ['nullable', 'number', Rule::numeric()->min(1)],
-                'bookId' => [Rule::exists('books', 'id')],
-                'employeeId' => [Rule::exists('employee', 'id')],
+                'page_start' => ['nullable', Rule::numeric()->min(1)],
+                'page_end' => ['nullable',  Rule::numeric()->min(1)->greaterThan('page_start')],
+                'book_id' => [Rule::exists('books', 'id')],
+                'employee_id' => [new OneEmployeeOneTask],
                 'notes' => [Rule::string()->max(255)]
             ]);
 
 
-            $task = Task::create($request->except(['bookId', 'employeeId']));
-            $task->book()->associate(Book::find($data['bookId']));
-            $task->employee()->associate(Employee::find($data['employeeId']));
+            $task = Task::create($request->all());
 
-            $task->save();
             return response(['redirect' => "tasks/$task->id", 'success' => true], 200);
         } catch (ValidationException $th) {
             return response(
@@ -57,6 +55,16 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
+        if ($task->page_start === null && $task->page_end === null) {
+            $taskSize = 'the full book';
+        } elseif ($task->page_start !== null && $task->page_end === null) {
+            $taskSize = "from page {$task->page_start} to the end of the book";
+        } elseif ($task->page_start === null && $task->page_end !== null) {
+            $taskSize = "from the beginning of the book to page {$task->page_end}";
+        } else {
+            $taskSize = "from page {$task->page_start} to page {$task->page_end}";
+        }
+        $task->fill(['task_size' => $taskSize]);
         return $task;
     }
 

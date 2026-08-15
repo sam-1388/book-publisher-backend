@@ -15,17 +15,15 @@ class EmployeeController extends Controller
      * Display a listing of the resource.
      */
     public function index(Request $request)
-    {   
-        $requestedOccupation=$request->query('occupation');
-
-        if ($requestedOccupation) {
-
-            $actualOccupation = Occupation::where('name',$requestedOccupation )->firstOrFail();
+    {
+        if ($request->query('occupation')) {
+        $requestedOccupation=$this->getCorrectType($request->query('occupation'));
+            $actualOccupation = Occupation::where('name', $requestedOccupation)->firstOrFail();
             $employees = $actualOccupation->employees;
             foreach ($employees as $employee) {
                 $employee->image = route('employeeImage', [$employee->id]);
             }
-            return $employees;
+            return ['occupation' => $actualOccupation];
         }
 
 
@@ -37,8 +35,25 @@ class EmployeeController extends Controller
         }
         return $occupations;
     }
+    private function getCorrectType(string $x)
+    {
+        switch ($x) {
+            case 'translation':
+                return 'translator';
+            case 'copyEditing':
+                return 'copyEditor';
+            case 'typeSetting':
+                return 'typeSetter';
+            case 'proofReading':
+                return 'proofReader';
+            case 'printing':
+                return 'printer';
 
-
+            default:
+                return 'others';
+        }
+    
+    }
     /**
      * Store a newly created resource in storage.
      */
