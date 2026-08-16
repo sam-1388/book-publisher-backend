@@ -182,8 +182,9 @@ class BookController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(Book $book)
-    {
+    {   
         Storage::disk('public')->delete($book->image);
+        $book->tasks()->delete();
         $book->delete();
         return ['success' => true];
     }

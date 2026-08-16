@@ -15,13 +15,13 @@ class OneEmployeeOneTask implements ValidationRule
      * @param  Closure(string, ?string=): PotentiallyTranslatedString  $fail
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
-    {
-        if (Employee::find($value)==null) {
+    {   
+        $employee=Employee::find($value);
+        if ($employee==null) {
             $fail('employee does not exist.');
         }
-        $employee=Employee::find($value);
         $activeTask=$employee->tasks()->where('finished',false)->exists();
-        if ($activeTask) {
+        if ($activeTask==true) {
             $fail('the employee is already busy with another task');
         }
     }

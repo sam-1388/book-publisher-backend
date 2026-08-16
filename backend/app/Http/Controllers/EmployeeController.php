@@ -17,7 +17,7 @@ class EmployeeController extends Controller
     public function index(Request $request)
     {
         if ($request->query('occupation')) {
-        $requestedOccupation=$this->getCorrectType($request->query('occupation'));
+            $requestedOccupation = $this->getCorrectType($request->query('occupation'));
             $actualOccupation = Occupation::where('name', $requestedOccupation)->firstOrFail();
             $employees = $actualOccupation->employees;
             foreach ($employees as $employee) {
@@ -52,16 +52,15 @@ class EmployeeController extends Controller
             default:
                 return 'others';
         }
-    
     }
     /**
      * Store a newly created resource in storage.
      */
     public function store(StoreEmployeeRequest $request)
     {
-        if ($request->file('image')) {
+        if ($request->hasFile('image')) {
 
-            $path = Storage::disk('local')->putFile('/employees', request('image'));
+            $path = Storage::disk('local')->putFile('employees', request('image'));
             $data = [
                 ...$request->safe()->except('image', 'selectedOccupations'),
                 'image' => $path
@@ -76,10 +75,8 @@ class EmployeeController extends Controller
 
 
         $employee = Employee::create($data);
-        foreach ($request->validated('selectedOccupations') as $id) {
-            $temp = Occupation::findOrFail($id);
-            $employee->occupations()->save($temp);
-        }
+        $employee->occupations()->attach(request('selectedOccupations'));
+
 
         return response(['redirect' => "/employees/$employee->id", 'success' => true], 200);
     }
@@ -101,29 +98,26 @@ class EmployeeController extends Controller
 
     public function getImage(Employee $employee)
     {
-        $image = Storage::disk('local')->get($employee->image);
-        if ($image == null) {
-            return response(status: 404);
+        if (!$employee->image) {
+            return response('', 404);
         }
-        $mime = Storage::disk('local')->mimeType($employee->image);
-        $filename = basename($employee->image);
-        return response($image, 200)
-            ->header('Content-Type', $mime)
-            ->header('Content-Disposition', "inline;filename=$filename");
+        return Storage::disk('local')->response($employee->image);
     }
     /**
      * Update the specified resource in storage.
      */
     public function update(StoreEmployeeRequest $request, Employee $employee)
     {
-        if ($request->file('image') != null) {
+        if ($request->hasFile('image')) {
 
-            Storage::disk('local')->delete($employee->image);
-            $path = Storage::disk('local')->putFile('/employees', request('image'));
+            $path = Storage::disk('local')->putFile('employees', request('image'));
             $data = [
                 ...$request->safe()->except('image', 'selectedOccupations'),
                 'image' => $path
             ];
+            if ($employee->image) {
+                Storage::disk('local')->delete($employee->image);
+            }
         } else {
             $data = [
                 ...$request->safe()->except('selectedOccupations'),
@@ -132,11 +126,7 @@ class EmployeeController extends Controller
         }
 
         $employee->occupations()->detach();
-        foreach ($request->validated('selectedOccupations') as $id) {
-            $temp = Occupation::findOrFail($id);
-            $employee->occupations()->save($temp);
-        }
-        $employee->save();
+        $employee->occupations()->attach(request('selectedOccupations'));
 
 
         $employee->update($data);
@@ -148,6 +138,11 @@ class EmployeeController extends Controller
      */
     public function destroy(Employee $employee)
     {
+        if ($employee->image) {
+            Storage::disk('local')->delete($employee->image);
+        }
+        $employee->occupations()->detach();
+        $employee->tasks()->delete();
         $employee->deleteOrFail();
         return response(['success' => true], 200);
     }

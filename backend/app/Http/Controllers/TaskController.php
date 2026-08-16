@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Task;
-use App\Models\Book;
-use App\Models\Employee;
 use App\Rules\OneEmployeeOneTask;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 
@@ -17,7 +17,30 @@ class TaskController extends Controller
      */
     public function index()
     {
-        return Task::all();
+        $tasks = Task::all();
+
+        foreach ($tasks as $task) {
+            if ($task->page_start === null && $task->page_end === null) {
+                $taskSize = 'the full book';
+            } elseif ($task->page_start !== null && $task->page_end === null) {
+                $taskSize = "from page {$task->page_start} to the end of the book";
+            } elseif ($task->page_start === null && $task->page_end !== null) {
+                $taskSize = "from the beginning of the book to page {$task->page_end}";
+            } else {
+                $taskSize = "from page {$task->page_start} to page {$task->page_end}";
+            }
+
+            $task->fill([
+                'task_size' => $taskSize,
+                'book' => $task->book->title,
+                'employee' => $task->employee->name,
+                'deadline' => str_replace('after', 'left', Date::now()->until($task->deadline)),
+                'finished' => $task->finished == 0 ? false : true,
+            ]);
+
+            
+        }
+        return $tasks;
     }
 
     /**
@@ -34,14 +57,17 @@ class TaskController extends Controller
                 'page_start' => ['nullable', Rule::numeric()->min(1)],
                 'page_end' => ['nullable',  Rule::numeric()->min(1)->greaterThan('page_start')],
                 'book_id' => [Rule::exists('books', 'id')],
-                'employee_id' => [new OneEmployeeOneTask],
+                'employee_id' => ['required', new OneEmployeeOneTask],
                 'notes' => [Rule::string()->max(255)]
             ]);
 
 
-            $task = Task::create($request->all());
+            $task = Task::create([
+                ...$data,
+                'finished' => false,
+            ]);
 
-            return response(['redirect' => "tasks/$task->id", 'success' => true], 200);
+            return response(['redirect' => "/tasks/$task->id", 'success' => true], 200);
         } catch (ValidationException $th) {
             return response(
                 $th->errors(),
@@ -64,7 +90,15 @@ class TaskController extends Controller
         } else {
             $taskSize = "from page {$task->page_start} to page {$task->page_end}";
         }
-        $task->fill(['task_size' => $taskSize]);
+
+        $task->fill([
+            'task_size' => $taskSize,
+            'book' => $task->book->title,
+            'employee' => $task->employee->name,
+            'deadline' => str_replace('after', 'left', Date::now()->until($task->deadline)),
+            'finished' => $task->finished == 0 ? 'no' : 'yes',
+        ]);
+
         return $task;
     }
 

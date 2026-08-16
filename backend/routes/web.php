@@ -4,6 +4,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\OccupationController;
 use App\Http\Controllers\RegisteredUserController;
+use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Http\Request;
@@ -63,4 +64,13 @@ Route::controller(TaskController::class)->group(function () {
     Route::get('/tasks/{task}', 'show');
     Route::patch('/tasks/{task}', 'update');
     Route::delete('/tasks/{task}', 'destroy');
+})->middleware('auth:sanctum');
+
+
+Route::controller(ResourceController::class)->group(function () {
+    Route::get('/resources', 'index');
+    Route::post('/resources', 'store');
+    Route::get('/resources/{resource}', 'show');
+    Route::patch('/resources/{resource}', 'update');
+    Route::delete('/resources/{resource}', 'destroy');
 })->middleware('auth:sanctum');
