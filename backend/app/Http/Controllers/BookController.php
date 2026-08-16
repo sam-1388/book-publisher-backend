@@ -50,7 +50,7 @@ class BookController extends Controller
                 return 'need typesetting';
             case 'proofReading':
                 return 'need proofReading';
-            case 'ready for printing':
+            case 'printing':
                 return 'ready for printing';
 
             default:

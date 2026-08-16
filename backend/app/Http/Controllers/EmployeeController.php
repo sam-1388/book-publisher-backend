@@ -46,7 +46,7 @@ class EmployeeController extends Controller
                 return 'typeSetter';
             case 'proofReading':
                 return 'proofReader';
-            case 'ready for printing':
+            case 'printing':
                 return 'printer';
 
             default:
