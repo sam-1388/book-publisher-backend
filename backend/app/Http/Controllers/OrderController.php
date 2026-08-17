@@ -139,7 +139,7 @@ class OrderController extends Controller
             'publish' => ['required', 'boolean'],
             'translate' => ['required', 'boolean'],
             'other' => ['required', 'boolean'],
-            'comment' => ['nullable', 'string', 'required_if:other:true'],
+            'comment' => ['nullable', 'string', 'required_if_accepted:other'],
             'files' => ['required', 'array', 'min:1', 'max:10'], //user sends an array of files
             'files.*' => [File::types(['docx', 'pdf', 'jpg', 'png', 'jpeg', 'webp'])],
           ]);
