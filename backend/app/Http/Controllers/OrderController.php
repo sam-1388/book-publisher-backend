@@ -250,6 +250,9 @@ class OrderController extends Controller
   public function getSessionItems(){
     return session('order.items',[]);
   }
+  public function getUserId(){
+    return session('user_id');
+  }
   /**
    * Display the specified resource.
    */

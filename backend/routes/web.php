@@ -24,6 +24,7 @@ Route::controller(RegisteredUserController::class)->group(function () {
     Route::post('/register', 'store');
     Route::post('/register2', 'addInfo');
     Route::get('/users', 'index');
+
 });
 
 Route::post('/login', [SessionController::class, 'store']);
@@ -40,6 +41,7 @@ Route::get('/user', function (Request $request) {
 Route::controller(BookController::class)->group(function () {
     Route::get('/books', 'index');
     Route::post('/books', 'store');
+    Route::post('/guest/books', 'getBooksForGuests')->withoutMiddleware('auth:sanctum');
     Route::get('/books/{book}', 'show');
     Route::patch('/books/{book}', 'update');
     Route::patch('/books/status/{book}', 'updateStatus');
@@ -86,6 +88,7 @@ Route::controller(ResourceController::class)->group(function () {
 Route::controller(OrderController::class)->group(function () {
     Route::get('/orders', 'index');
     Route::get('/sessionItems', 'getSessionItems');
+    Route::get('/sessionUserId', 'getUserId');
     Route::post('/orders', 'store');
     Route::get('/orders/{order}', 'show');
     Route::patch('/orders/{order}', 'update');

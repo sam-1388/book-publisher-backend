@@ -3,15 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
-use PhpParser\Node\Stmt\TryCatch;
 
 class BookController extends Controller
 {
@@ -20,7 +17,7 @@ class BookController extends Controller
      */
     public function index(Request $request)
     {
-        $status=$request->query('status');
+        $status = $request->query('status');
 
         if ($status) {
             $temp = $this->getCorrectType($status);
@@ -36,6 +33,20 @@ class BookController extends Controller
         return ['books' => $books];
     }
 
+    public function getBooksForGuests(Request $request)
+    {
+        try {
+            $data = $request->validate(['user_id' => ['required', Rule::exists('users', 'id')]]);
+            $books = User::find($data['user_id'])
+                ->books()
+                ->select(['id','title', 'edition', 'author', 'number_of_copies'])
+                ->get();
+
+            return $books;
+        } catch (ValidationException $th) {
+            return response($th->errors(), 422);
+        }
+    }
 
 
 
@@ -71,7 +82,7 @@ class BookController extends Controller
                 'publishing_year' => ['required', Rule::date()->format('Y')->todayOrBefore()],
                 'author' => ['required'],
                 'edition' => ['nullable'],
-                'number_of_copies' => ['between:0,100000', 'nullable'],
+                'number_of_copies' => ['between:0,100000','required'],
                 'image' => ['image', 'nullable', 'max:5120'],
                 'notes' => ['max:500', 'nullable']
             ]
@@ -91,7 +102,7 @@ class BookController extends Controller
             }
 
 
-            $book = Book::create([
+            $book = $request->user()->books()->create([
                 ...$validator->safe()->except(['image']),
                 'image' => $path
             ]);
@@ -182,7 +193,7 @@ class BookController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(Book $book)
-    {   
+    {
         Storage::disk('public')->delete($book->image);
         $book->tasks()->delete();
         $book->delete();
