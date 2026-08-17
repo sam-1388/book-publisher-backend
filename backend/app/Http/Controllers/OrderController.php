@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\File;
@@ -32,20 +33,24 @@ class OrderController extends Controller
       if ($step == 1) {
         try {
           $data = $request->validate([
-            'user_id' => ['required', Rule::exists('users', 'id')],
+            'user_id' => ['required', 'integer', Rule::exists('users', 'id')],
           ]);
         } catch (ValidationException $th) {
           return response($th->errors(), 422);
         }
 
         session(['user_id' => $data['user_id']]);
+        session()->put('order', [
+          'items' => [],
+          'current' => []
+        ]);
         return ['success' => true];
       }
       if ($step == 2) {
         try {
           $data = $request->validate([
             'email' => ['nullable', 'email', 'required_without_all:phone_number,address,contacts',],
-            'phone_number' => ['nullable', 'string', 'required_without_all:email,address,contacts',],
+            'phone_number' => ['nullable', 'string', 'required_without_all:email,address,contacts','regex:/\d{10}/'],
             'address' => ['nullable', 'string', 'required_without_all:email,phone_number,contacts',],
             'contacts' => ['nullable', 'string', 'required_without_all:email,phone_number,address',],
           ]);
@@ -54,14 +59,18 @@ class OrderController extends Controller
         }
 
 
-        session([
-          'email' => $data['email'],
-          'phone_number' => $data['phone_number'],
-          'address' => $data['address'],
-          'contacts' => $data['contacts']
-        ]);
+        session(
+          [
+            'email' => $data['email'] ?? null,
+            'phone_number' => $data['phone_number'] ?? null,
+            'address' => $data['address'] ?? null,
+            'contacts' => $data['contacts'] ?? null
+          ]
+        );
 
-        return ['success' => true];
+        
+
+        return ['success' => true ];
       }
       if ($step == 3) {
         try {
@@ -72,15 +81,23 @@ class OrderController extends Controller
           return response($th->errors(), 422);
         }
 
-        session(['purchase' => $data['purchase']]);
+
+        $previous = session('order.current');
+        session()->put(
+          'order.current',
+          array_merge(
+            $previous,
+            ['purchase' => $data['purchase']]
+          )
+        );
         return ['success' => true];
       }
       if ($step == 4) {
         try {
           $data = $request->validate([
-            'book_id' => ['nullable', Rule::exists('books', 'id')],
-            'quantity' => ['required', 'numeric', 'min:1'],
-            'comment' => ['exclude_unless:book_id,null', 'string']
+            'book_id' => ['nullable', 'integer', Rule::exists('books', 'id')],
+            'quantity' => ['required', 'integer', 'min:1'],
+            'comment' => ['required_if:book_id,null', 'string', 'nullable']
           ]);
         } catch (ValidationException $th) {
           return response($th->errors(), 422);
@@ -88,29 +105,60 @@ class OrderController extends Controller
 
         $bookTitle = null;
         if (!empty($data['book_id'])) {
-          $bookTitle = Book::find($data['book_id'])->title;
+          $bookTitle = Book::find($data['book_id'] ?? null)?->title;
         }
 
 
-        session([
-          'book_id' => $data['book_id'],
-          'quantity' => $data['quantity'],
-          'comment' => $data['comment'],
-          'book_title' => $bookTitle
-        ]);
+        $previous = session('order.current');
+        session()->put(
+          'order.current',
+          array_merge(
+            $previous,
+            [
+              'book_id' => $data['book_id'] ?? null,
+              'quantity' => $data['quantity'],
+              'comment' => $data['comment'] ?? null,
+              'book_title' => $bookTitle ?? null
+            ]
+          )
+        );
+
+        session()->push(
+          'order.items',
+          session('order.current', [])
+        );
+
+        session()->put('order.current', []);
 
         return ['success' => true];
       }
       if ($step == 5) {
         try {
           $data = $request->validate([
-            'services'=>['array','required','min:1','in_array_keys:publish,translate,print,other'],
-            'services.*'=>['boolean'],
-            'comment' => ['nullable', 'required_if:other:true'],
-            'files' => ['required','array','min:1','max:10'], //user sends an array of files
+            'print' => ['required', 'boolean'],
+            'publish' => ['required', 'boolean'],
+            'translate' => ['required', 'boolean'],
+            'other' => ['required', 'boolean'],
+            'comment' => ['nullable', 'string', 'required_if:other:true'],
+            'files' => ['required', 'array', 'min:1', 'max:10'], //user sends an array of files
             'files.*' => [File::types(['docx', 'pdf', 'jpg', 'png', 'jpeg', 'webp'])],
           ]);
 
+          if (
+            ! $data['print'] &&
+            ! $data['publish'] &&
+            ! $data['translate'] &&
+            ! $data['other']
+          ) {
+            return response(
+              ['errors' => [
+                'services' => [
+                  'Select at least one service.',
+                ],
+              ]],
+              422
+            );
+          }
           $paths = [];
 
           foreach ($data['files'] as $file) {
@@ -121,15 +169,27 @@ class OrderController extends Controller
           return response($th->errors(), 422);
         }
 
-        session([
-          'print' => $data['print'],
-          'publish' => $data['publish'],
-          'translate' => $data['translate'],
-          'other' => $data['other'],
-          'comment' => $data['comment'],
-          'files' => $paths
-        ]);
+        $previous = session('order.current');
+        session()->put(
+          'order.current',
+          array_merge(
+            $previous,
+            [
+              'print' => $data['print'],
+              'publish' => $data['publish'],
+              'translate' => $data['translate'],
+              'other' => $data['other'],
+              'comment' => $data['comment'] ?? null,
+              'files' => $paths
+            ]
+          )
+        );
 
+        session()->push(
+          'order.items',
+          session('order.current')
+        );
+        session()->put('order.current', []);
         return ['success' => true];
       }
       if ($step == 6) {
@@ -144,35 +204,52 @@ class OrderController extends Controller
         }
 
 
-        $orderData = session()->only([
+
+        $orderData = array_merge(
+          session()->only([
+            'user_id',
+            'email',
+            'phone_number',
+            'address',
+            'contacts',
+            'notes',
+            'payment',
+          ]),
+          $data
+        );
+
+        $orderItems = session('order.items', []);
+        if (empty($orderItems)) {
+          return response([
+            'errors' => [
+              'message' => 'Add at least one order item.',
+            ]
+          ], 422);
+        }
+        $order = DB::transaction(function () use ($orderData, $orderItems) {
+          $order = Order::create($orderData);
+          foreach ($orderItems as $key => $value) {
+            $order->orderItems()->create($value);
+          }
+          return $order;
+        });
+
+        
+        session()->forget([
           'user_id',
           'email',
           'phone_number',
           'address',
           'contacts',
-          'notes',
-          'payment',
+          'order',
         ]);
-
-        $itemData = session()->only([
-          'files',
-          'purchase',
-          'publish',
-          'translate',
-          'other',
-          'book_title',
-          'book_id',
-          'quantity',
-          'comment'
-        ]);
-
-        $order = Order::create($orderData);
-        $order->orderItems()->create($itemData);
-        return ['success' => true];
+        return ['success' => true, 'order_id' => $order->id];
       }
     }
   }
-
+  public function getSessionItems(){
+    return session('order.items',[]);
+  }
   /**
    * Display the specified resource.
    */

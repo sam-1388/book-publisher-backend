@@ -18,7 +18,7 @@
                 $table->string('email')->nullable();
                 $table->string('address')->nullable();
                 $table->string('phone_number')->nullable();
-                $table->enum('payment',['cash','paypal','visa','master card'])->default('cash');
+                $table->enum('payment', ['cash', 'paypal', 'visa', 'master card'])->default('cash');
                 $table->string('status')->default('pending');
                 $table->unsignedInteger('final_price_in_cents')->nullable();
                 $table->text('notes')->nullable();
@@ -30,11 +30,11 @@
                 $table->id();
                 $table->foreignId('order_id')->constrained()->cascadeOnDelete();
                 $table->json('files')->nullable();
-
-                $table->boolean('purchase')->default(true);
-
-                $table->json('services');
-
+                $table->boolean('purchase')->default(false);
+                $table->boolean('print')->default(false);
+                $table->boolean('publish')->default(false);
+                $table->boolean('translate')->default(false);
+                $table->boolean('other')->default(false);
                 $table->string('book_title')->nullable();
                 $table->foreignId('book_id')->nullable()->constrained()->nullOnDelete();
                 $table->unsignedInteger('unit_price_in_cents')->nullable();
@@ -42,7 +42,7 @@
                 $table->unsignedInteger('quantity')->default(1);
                 $table->text('comment')->nullable();
                 $table->timestamps();
-            }); 
+            });
         }
 
         /**

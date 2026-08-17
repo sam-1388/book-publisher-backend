@@ -85,6 +85,7 @@ Route::controller(ResourceController::class)->group(function () {
 
 Route::controller(OrderController::class)->group(function () {
     Route::get('/orders', 'index');
+    Route::get('/sessionItems', 'getSessionItems');
     Route::post('/orders', 'store');
     Route::get('/orders/{order}', 'show');
     Route::patch('/orders/{order}', 'update');

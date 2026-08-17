@@ -6,13 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class OrderItem extends Model
 {
-    public function casts(): array
+    protected function casts(): array
     {
         return [
             'files' => 'array',
-            'services'=>'array'
+            'purchase' => 'boolean',
+            'print' => 'boolean',
+            'publish' => 'boolean',
+            'translate' => 'boolean',
+            'other' => 'boolean',
+            'quantity' => 'integer',
         ];
     }
-
-    
 }
