@@ -3,6 +3,7 @@
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\OccupationController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\SessionController;
@@ -18,9 +19,14 @@ Route::get('/login', function () {
     return ['redirect' => '/login'];
 })->name('login');
 
+
+Route::controller(RegisteredUserController::class)->group(function () {
+    Route::post('/register', 'store');
+    Route::post('/register2', 'addInfo');
+    Route::get('/users', 'index');
+});
+
 Route::post('/login', [SessionController::class, 'store']);
-Route::post('/register', [RegisteredUserController::class, 'store']);
-Route::post('/register2', [RegisteredUserController::class, 'addInfo']);
 Route::get('/verificationCode', [RegisteredUserController::class, 'getCode'])->middleware('auth:sanctum');
 Route::post('/verificationCode', [RegisteredUserController::class, 'verifyCode'])->middleware('auth:sanctum');
 Route::post('/saveNumber', [RegisteredUserController::class, 'storeNumber'])->middleware('auth:sanctum');
@@ -74,3 +80,13 @@ Route::controller(ResourceController::class)->group(function () {
     Route::patch('/resources/{resource}', 'update');
     Route::delete('/resources/{resource}', 'destroy');
 })->middleware('auth:sanctum');
+
+
+
+Route::controller(OrderController::class)->group(function () {
+    Route::get('/orders', 'index');
+    Route::post('/orders', 'store');
+    Route::get('/orders/{order}', 'show');
+    Route::patch('/orders/{order}', 'update');
+    Route::delete('/orders/{order}', 'destroy');
+});

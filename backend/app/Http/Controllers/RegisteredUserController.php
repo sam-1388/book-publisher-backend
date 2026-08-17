@@ -12,6 +12,12 @@ use Psy\Readline\Hoa\Console;
 
 class RegisteredUserController extends Controller
 {
+
+
+    public function index()
+    {
+        return User::all();
+    }
     public function store(Request $request)
     {
         $validator = Validator::make(
