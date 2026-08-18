@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ItemsPriced;
 use App\Models\Book;
 use App\Models\Order;
 use App\Models\OrderItem;
@@ -28,7 +29,11 @@ class OrderController extends Controller
         $query->where('status', $status);
       })->where('user_id', '=', Auth::id())->get();
 
+
     foreach ($orders as $order) {
+      $order->fill([
+        'final_price_in_cents' => $this->moneyConvert($order->final_price_in_cents)
+      ]);
       foreach ($order->orderItems as $orderItem) {
         $orderItem->fill([
           'unit_price_in_cents' => $this->moneyConvert($orderItem->unit_price_in_cents),
@@ -65,6 +70,8 @@ class OrderController extends Controller
       $total = (int) round($data['total_price_in_cents'] * 100);
       $orderItem->update(['total_price_in_cents' => $total]);
     }
+
+    ItemsPriced::dispatch($orderItem->order);
     return ['success' => true];
   }
 
@@ -326,7 +333,11 @@ class OrderController extends Controller
   public function show(Order $order)
   {
     $order->load('orderItems');
+    $order->fill([
+      'final_price_in_cents' => $this->moneyConvert($order->final_price_in_cents)
+    ]);
     foreach ($order->orderItems as $orderItem) {
+
       $orderItem->fill([
         'unit_price_in_cents' => $this->moneyConvert($orderItem->unit_price_in_cents),
         'total_price_in_cents' => $this->moneyConvert($orderItem->total_price_in_cents)
@@ -342,12 +353,15 @@ class OrderController extends Controller
   public function update(Request $request, Order $order)
   {
     try {
-      $newStatus = request()->validate(['status' => ['required', 'in:accepted,pending,cancelled,done']]);
+      $newData = request()->validate([
+        'status' => ['sometimes','required', 'in:accepted,pending,cancelled,done'],
+        'arrival_date'=>['sometimes','required',Rule::date()->format('Y-m-d')->after(now())]
+        ]);
     } catch (ValidationException $th) {
       return response($th->errors(), 422);
     }
 
-    $order->update($newStatus);
+    $order->update($newData);
     return ['success' => true];
   }
 
