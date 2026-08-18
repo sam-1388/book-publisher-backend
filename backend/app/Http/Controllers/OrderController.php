@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\Order;
+use App\Models\OrderItem;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
@@ -16,11 +19,73 @@ class OrderController extends Controller
   /**
    * Display a listing of the resource.
    */
-  public function index()
+  public function index(Request $request)
   {
-    //
+    $status = $request->query('status');
+
+    $orders = Order::with('orderItems')
+      ->when($status, function (Builder $query, $status) {
+        $query->where('status', $status);
+      })->where('user_id', '=', Auth::id())->get();
+
+    foreach ($orders as $order) {
+      foreach ($order->orderItems as $orderItem) {
+        $orderItem->fill([
+          'unit_price_in_cents' => $this->moneyConvert($orderItem->unit_price_in_cents),
+          'total_price_in_cents' => $this->moneyConvert($orderItem->total_price_in_cents)
+
+        ]);
+      }
+    }
+    return $orders;
   }
 
+  public function updateItem(Request $request, OrderItem $orderItem)
+  {
+    try {
+      $data = $request->validate([
+        'unit_price_in_cents' => ['sometimes', 'required', 'numeric', 'min:0', 'prohibits:total_price_in_cents'],
+        'total_price_in_cents' => ['sometimes', 'required', 'numeric', 'min:0', 'prohibits:unit_price_in_cents']
+
+      ]);
+    } catch (ValidationException $th) {
+      return response($th->errors(), 422);
+    }
+
+
+    if ($request->has('unit_price_in_cents')) {
+      $unit = (int) round($data['unit_price_in_cents'] * 100);
+      $total = $unit * $orderItem->quantity;
+      $orderItem->update([
+        'total_price_in_cents' => $total,
+        'unit_price_in_cents' => $unit
+      ]);
+    }
+    if ($request->has('total_price_in_cents')) {
+      $total = (int) round($data['total_price_in_cents'] * 100);
+      $orderItem->update(['total_price_in_cents' => $total]);
+    }
+    return ['success' => true];
+  }
+
+
+  public function downloadFile(Request $request, OrderItem $orderItem)
+  {
+    try {
+      $data = $request->validate([
+        'path' => ['required', Rule::in($orderItem->files)]
+      ]);
+    } catch (ValidationException $th) {
+      return response($th->errors(), 422);
+    }
+    return Storage::disk('local')->download($data['path'], 'client file');
+  }
+  private function moneyConvert(?int $x): string|null
+  {
+    return $x == null ?
+      null :
+      '$' . (number_format($x / 100, 2));
+  }
   /**
    * Store a newly created resource in storage.
    */
@@ -50,7 +115,7 @@ class OrderController extends Controller
         try {
           $data = $request->validate([
             'email' => ['nullable', 'email', 'required_without_all:phone_number,address,contacts',],
-            'phone_number' => ['nullable', 'string', 'required_without_all:email,address,contacts','regex:/\d{10}/'],
+            'phone_number' => ['nullable', 'string', 'required_without_all:email,address,contacts', 'regex:/\d{10}/'],
             'address' => ['nullable', 'string', 'required_without_all:email,phone_number,contacts',],
             'contacts' => ['nullable', 'string', 'required_without_all:email,phone_number,address',],
           ]);
@@ -68,9 +133,9 @@ class OrderController extends Controller
           ]
         );
 
-        
 
-        return ['success' => true ];
+
+        return ['success' => true];
       }
       if ($step == 3) {
         try {
@@ -222,7 +287,7 @@ class OrderController extends Controller
         if (empty($orderItems)) {
           return response([
             'errors' => [
-              'message' => 'Add at least one order item.',
+              'message' => 'go back and Add at least one order item.',
             ]
           ], 422);
         }
@@ -234,7 +299,7 @@ class OrderController extends Controller
           return $order;
         });
 
-        
+
         session()->forget([
           'user_id',
           'email',
@@ -247,10 +312,12 @@ class OrderController extends Controller
       }
     }
   }
-  public function getSessionItems(){
-    return session('order.items',[]);
+  public function getSessionItems()
+  {
+    return session('order.items', []);
   }
-  public function getUserId(){
+  public function getUserId()
+  {
     return session('user_id');
   }
   /**
@@ -258,7 +325,15 @@ class OrderController extends Controller
    */
   public function show(Order $order)
   {
-    //
+    $order->load('orderItems');
+    foreach ($order->orderItems as $orderItem) {
+      $orderItem->fill([
+        'unit_price_in_cents' => $this->moneyConvert($orderItem->unit_price_in_cents),
+        'total_price_in_cents' => $this->moneyConvert($orderItem->total_price_in_cents)
+
+      ]);
+    }
+    return $order;
   }
 
   /**
@@ -266,7 +341,14 @@ class OrderController extends Controller
    */
   public function update(Request $request, Order $order)
   {
-    //
+    try {
+      $newStatus = request()->validate(['status' => ['required', 'in:accepted,pending,cancelled,done']]);
+    } catch (ValidationException $th) {
+      return response($th->errors(), 422);
+    }
+
+    $order->update($newStatus);
+    return ['success' => true];
   }
 
   /**

@@ -24,7 +24,6 @@ Route::controller(RegisteredUserController::class)->group(function () {
     Route::post('/register', 'store');
     Route::post('/register2', 'addInfo');
     Route::get('/users', 'index');
-
 });
 
 Route::post('/login', [SessionController::class, 'store']);
@@ -86,11 +85,13 @@ Route::controller(ResourceController::class)->group(function () {
 
 
 Route::controller(OrderController::class)->group(function () {
-    Route::get('/orders', 'index');
+    Route::get('/orders', 'index')->middleware('auth:sanctum');
     Route::get('/sessionItems', 'getSessionItems');
     Route::get('/sessionUserId', 'getUserId');
     Route::post('/orders', 'store');
     Route::get('/orders/{order}', 'show');
+    Route::post('/orders/items/files/{orderItem}','downloadFile')->middleware('auth:sanctum');
+    Route::patch('/orders/items/{orderItem}', 'updateItem')->middleware('auth:sanctum');
     Route::patch('/orders/{order}', 'update');
     Route::delete('/orders/{order}', 'destroy');
 });
