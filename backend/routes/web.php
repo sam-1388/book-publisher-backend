@@ -6,6 +6,7 @@ use App\Http\Controllers\OccupationController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\ResourceController;
+use App\Http\Controllers\SalesController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Http\Request;
@@ -95,3 +96,7 @@ Route::controller(OrderController::class)->group(function () {
     Route::patch('/orders/{order}', 'update');
     Route::delete('/orders/{order}', 'destroy');
 });
+
+Route::controller(SalesController::class)->group(function(){
+    Route::post('/sales','index');
+})->middleware('auth:sanctum');

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -17,21 +19,28 @@ class BookController extends Controller
      */
     public function index(Request $request)
     {
-        $status = $request->query('status');
+        $status = $request->query('status') ?? null;
+        $search = $request->query('query') ?? null;
+        $temp = $this->getCorrectType($status);
+       
 
-        if ($status) {
-            $temp = $this->getCorrectType($status);
-            $temp
-                ? $books = Book::where('status', $temp)->get()
-                : $books = Book::all();
-        } else {
-            $books = Book::all();
-        }
+        $books = Auth::user()->books()
+            ->when($temp, function (Builder $query, $temp) {
+                $query->where('status', $temp);
+            })
+            ->when($search, function (Builder $query, $search) {
+                $query->where('title','LIKE', "%{$search}%");
+            })
+            ->paginate(14)
+            ->withQueryString();
+
+
         foreach ($books as $book) {
             $book->image = url($book->image);
         }
-        return ['books' => $books];
+        return $books;
     }
+    public function search(Request $request) {}
 
     public function getBooksForGuests(Request $request)
     {
@@ -39,7 +48,7 @@ class BookController extends Controller
             $data = $request->validate(['user_id' => ['required', Rule::exists('users', 'id')]]);
             $books = User::find($data['user_id'])
                 ->books()
-                ->select(['id','title', 'edition', 'author', 'number_of_copies'])
+                ->select(['id', 'title', 'edition', 'author', 'number_of_copies'])
                 ->get();
 
             return $books;
@@ -50,7 +59,7 @@ class BookController extends Controller
 
 
 
-    private function getCorrectType(string $x)
+    private function getCorrectType(?string $x)
     {
         switch ($x) {
             case 'translation':
@@ -82,8 +91,8 @@ class BookController extends Controller
                 'publishing_year' => ['required', Rule::date()->format('Y')->todayOrBefore()],
                 'author' => ['required'],
                 'edition' => ['nullable'],
-                'number_of_copies' => ['between:0,100000','required'],
-                'image' => ['image', 'nullable', 'max:5120'],
+                'number_of_copies' => ['between:0,100000', 'required'],
+                'image' => ['image', 'required', 'max:5120'],
                 'notes' => ['max:500', 'nullable']
             ]
         );
@@ -160,7 +169,7 @@ class BookController extends Controller
                 'author' => ['required'],
                 'edition' => ['nullable'],
                 'number_of_copies' => ['between:0,100000', 'nullable'],
-                'image' => ['image', 'nullable'],
+                'image' => ['image', 'required'],
                 'notes' => ['max:500', 'nullable']
             ]
         );
