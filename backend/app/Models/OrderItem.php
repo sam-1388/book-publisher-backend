@@ -20,4 +20,8 @@ class OrderItem extends Model
             'quantity' => 'integer',
         ];
     }
+
+    public function order(){
+        return $this->belongsTo(Order::class);
+    }
 }

@@ -21,6 +21,9 @@ class CalculateOrderPrice
      */
     public function handle(ItemsPriced $event): void
     {
-        //
+        $finalPrice = $event->order->orderItems()->sum('total_price_in_cents');
+        $event->order->update([
+            'final_price_in_cents'=>$finalPrice
+        ]);
     }
 }
