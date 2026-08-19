@@ -27,7 +27,12 @@ Route::controller(RegisteredUserController::class)->group(function () {
     Route::get('/users', 'index');
 });
 
-Route::post('/login', [SessionController::class, 'store']);
+Route::post('/login', [
+    SessionController::class,
+    'store',
+])->middleware('throttle:login');
+
+
 Route::get('/verificationCode', [RegisteredUserController::class, 'getCode'])->middleware('auth:sanctum');
 Route::post('/verificationCode', [RegisteredUserController::class, 'verifyCode'])->middleware('auth:sanctum');
 Route::post('/saveNumber', [RegisteredUserController::class, 'storeNumber'])->middleware('auth:sanctum');
@@ -91,12 +96,12 @@ Route::controller(OrderController::class)->group(function () {
     Route::get('/sessionUserId', 'getUserId');
     Route::post('/orders', 'store');
     Route::get('/orders/{order}', 'show');
-    Route::post('/orders/items/files/{orderItem}','downloadFile')->middleware('auth:sanctum');
+    Route::post('/orders/items/files/{orderItem}', 'downloadFile')->middleware('auth:sanctum');
     Route::patch('/orders/items/{orderItem}', 'updateItem')->middleware('auth:sanctum');
     Route::patch('/orders/{order}', 'update');
     Route::delete('/orders/{order}', 'destroy');
 });
 
-Route::controller(SalesController::class)->group(function(){
-    Route::post('/sales','index');
+Route::controller(SalesController::class)->group(function () {
+    Route::post('/sales', 'index');
 })->middleware('auth:sanctum');

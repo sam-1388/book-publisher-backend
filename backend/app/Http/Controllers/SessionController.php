@@ -14,19 +14,35 @@ class SessionController extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'email' => ['email', 'required'],
-                'password' => ['required']
+                'email' => [
+                    'required',
+                    'email',
+                ],
+                'password' => [
+                    'required',
+                    'string',
+                ],
             ]
         );
 
         if ($validator->fails()) {
+            return response(
+              $validator->errors(),
+                422
+            );
+        }
+
+        $credentials = $validator->validated();
+
+        if (!Auth::attempt($credentials)) {
             return response(['email' => ' ', 'password' => 'invalid credentials'], 422);
         }
 
-        if (Auth::attempt($validator->validated())) {
-            $request->session()->regenerate();
-            return response(['success'=>true],200);
-        }
+        $request->session()->regenerate();
+
+        return response()->json([
+            'success' => true,
+        ], 200);
     }
     public function destroy(Request $request)
     {
