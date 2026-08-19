@@ -12,6 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('books', function (Blueprint $table) {
+            $table->integer('page_count')->nullable()->change();
+            $table->string('edition')->nullable()->change();
+            $table->integer('number_of_copies')->nullable()->change();
+
+            
         });
     }
 
@@ -20,6 +25,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::table('books', function (Blueprint $table) {
+            //
+        });
     }
 };
