@@ -36,6 +36,7 @@ class StoreEmployeeRequest extends FormRequest
         'age' => ['required', 'integer', 'Between:18,80'],
         'rating' => ['nullable', Rule::in([1, 2, 3, 4, 5]), 'integer'],
         'image' => ['nullable', 'image'],
+        'notes'=>['nullable','string'],
         'selectedOccupations'=>['required'],
         'selectedOccupations.*' => [Rule::exists('occupations', 'id')],
       ];

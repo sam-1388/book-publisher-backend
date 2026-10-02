@@ -22,21 +22,21 @@ class BookController extends Controller
         $status = $request->query('status') ?? null;
         $search = $request->query('query') ?? null;
         $temp = $this->getCorrectType($status);
-       
+
 
         $books = Auth::user()->books()
             ->when($temp, function (Builder $query, $temp) {
                 $query->where('status', $temp);
             })
             ->when($search, function (Builder $query, $search) {
-                $query->where('title','LIKE', "%{$search}%");
+                $query->where('title', 'LIKE', "%{$search}%");
             })
             ->paginate(14)
             ->withQueryString();
 
 
         foreach ($books as $book) {
-            $book->image = url($book->image);
+            $book->image = $book->image ? url($book->image) : null;
         }
         return $books;
     }
@@ -92,7 +92,7 @@ class BookController extends Controller
                 'author' => ['required'],
                 'edition' => ['nullable'],
                 'number_of_copies' => ['between:0,100000', 'required'],
-                'image' => ['image', 'required', 'max:5120'],
+                'image' => ['image', 'max:5120'],
                 'notes' => ['max:500', 'nullable']
             ]
         );
@@ -149,7 +149,7 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        $book->image = url($book->image);
+        $book->image = $book->image ? url($book->image) : null;
         return $book;
     }
 

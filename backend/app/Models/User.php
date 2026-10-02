@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-#[Fillable(['name', 'email', 'password','publisher_name','location','phone_number','country_code'])]
+#[Fillable(['name', 'email', 'password', 'publisher_name', 'location', 'phone_number', 'country_code'])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
@@ -30,11 +30,30 @@ class User extends Authenticatable
         ];
     }
 
-    public function books(){
+    public function employees()
+    {
+        return $this->hasMany(Employee::class);
+    }
+
+    public function books()
+    {
         return $this->hasMany(Book::class);
     }
 
-    public function orders(){
+    public function orders()
+    {
         return $this->hasMany(Order::class);
+    }
+    public function occupations()
+    {
+        return $this->hasMany(Occupation::class);
+    }
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
+    public function resources()
+    {
+        return $this->hasMany(Resource::class);
     }
 }

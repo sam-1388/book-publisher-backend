@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Occupation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 
 class OccupationController extends Controller
@@ -11,9 +13,9 @@ class OccupationController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Occupation::all();
+        return Occupation::whereBelongsTo($request->user())->get();
     }
 
     /**
@@ -33,10 +35,10 @@ class OccupationController extends Controller
                     'name.required' => 'occupation name required',
                     'name.unique' => 'this occupation already exists, add another one',
                     'color.required' => 'select a color',
-                    'color.hex_color'=>'enter a valid color'
+                    'color.hex_color' => 'enter a valid color'
                 ]
             );
-            Occupation::create($data);
+            $request->user()->occupations()->create($data);
             
         } catch (ValidationException $x) {
             return response($x->errors(), 422);
@@ -75,7 +77,11 @@ class OccupationController extends Controller
      */
     public function destroy(Occupation $occupation)
     {
-        $occupation->delete();
-        return response(['success' => true], 200);
+        DB::transaction(function () use ($occupation) {
+            if ($occupation->employees->isNotEmpty()) {
+                $occupation->employees()->detach();
+            }
+            $occupation->delete();
+        });
     }
 }

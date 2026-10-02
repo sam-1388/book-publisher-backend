@@ -11,7 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('books', function (Blueprint $table) {
+
+        Schema::table('employees', function (Blueprint $table) {
+            
+            $table->foreignId('user_id')->references('id')->on('users');
         });
     }
 
@@ -20,6 +23,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::table('employees',function(Blueprint $table){
+            $table->dropColumn('user_id');
+        });
     }
 };

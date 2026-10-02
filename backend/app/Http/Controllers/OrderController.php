@@ -147,7 +147,7 @@ class OrderController extends Controller
       if ($step == 3) {
         try {
           $data = $request->validate([
-            'purchase' => ['required', 'boolean'],
+            'purchase' => ['required  ', 'boolean'],
           ]);
         } catch (ValidationException $th) {
           return response($th->errors(), 422);

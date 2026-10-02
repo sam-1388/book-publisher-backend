@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
-use Psy\Readline\Hoa\Console;
+use Illuminate\Validation\Rules\Password;
+
 
 class RegisteredUserController extends Controller
 {
@@ -25,7 +25,7 @@ class RegisteredUserController extends Controller
             [
                 'name' => ['required'],
                 'email' => ['required', 'email', 'unique:App\Models\User,email'],
-                'password' => ['required', 'confirmed',] // TODO :Password::min(8)->letters()->numbers()
+                'password' => ['required', 'confirmed',Password::min(8)->letters()->numbers()]
             ]
         );
 

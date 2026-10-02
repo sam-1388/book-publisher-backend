@@ -15,4 +15,7 @@ class Occupation extends Model
     public function employees(){
         return $this->belongsToMany(Employee::class);
     }
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

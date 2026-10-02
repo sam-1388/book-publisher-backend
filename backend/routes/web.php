@@ -56,35 +56,35 @@ Route::controller(BookController::class)->group(function () {
 Route::controller(EmployeeController::class)->group(function () {
     Route::get('/employees', 'index');
     Route::post('/employees', 'store');
-    Route::get('/employees/{employee}', 'show');
+    Route::get('/employees/{employee}', 'show')->can('view','employee');
     Route::get('/employees/{employee}/image', 'getImage')->name('employeeImage');
-    Route::patch('/employees/{employee}', 'update');
-    Route::delete('/employees/{employee}', 'destroy');
+    Route::patch('/employees/{employee}', 'update')->can('update','employee');
+    Route::delete('/employees/{employee}', 'destroy')->can('delete','employee');
 })->middleware('auth:sanctum');
 
 Route::controller(OccupationController::class)->group(function () {
     Route::get('/occupations', 'index');
     Route::post('/occupations', 'store');
-    Route::get('/occupations/{occupation}', 'show');
-    Route::patch('/occupations/{occupation}', 'update');
-    Route::delete('/occupations/{occupation}', 'destroy');
+    Route::get('/occupations/{occupation}', 'show')->can('view','occupation');
+    Route::patch('/occupations/{occupation}', 'update')->can('update','occupation');
+    Route::delete('/occupations/{occupation}', 'destroy')->can('delete','occupation');
 })->middleware('auth:sanctum');
 
 Route::controller(TaskController::class)->group(function () {
     Route::get('/tasks', 'index');
     Route::post('/tasks', 'store');
-    Route::get('/tasks/{task}', 'show');
-    Route::patch('/tasks/{task}', 'update');
-    Route::delete('/tasks/{task}', 'destroy');
+    Route::get('/tasks/{task}', 'show')->can('view','task');
+    Route::patch('/tasks/{task}', 'update')->can('update','task');
+    Route::delete('/tasks/{task}', 'destroy')->can('delete','task');
 })->middleware('auth:sanctum');
 
 
 Route::controller(ResourceController::class)->group(function () {
     Route::get('/resources', 'index');
     Route::post('/resources', 'store');
-    Route::get('/resources/{resource}', 'show');
-    Route::patch('/resources/{resource}', 'update');
-    Route::delete('/resources/{resource}', 'destroy');
+    Route::get('/resources/{resource}', 'show')->can('view','resource');
+    Route::patch('/resources/{resource}', 'update')->can('update','resource');
+    Route::delete('/resources/{resource}', 'destroy')->can('delete','resource');
 })->middleware('auth:sanctum');
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Resource;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 
@@ -19,19 +20,19 @@ class ResourceController extends Controller
 
         if ($ordering) {
             if ($ordering == 'highestCost') {
-                $resources = Resource::orderBy('price_in_cents', 'desc')->get();
+                $resources = Auth::user()->resources()->orderBy('price_in_cents', 'desc')->get();
             } else if ($ordering == 'highestStock') {
-                $resources = Resource::orderBy('stock', 'desc')->get();
+                $resources = Auth::user()->resources()->orderBy('stock', 'desc')->get();
             }
         } else if ($filtering) {
             if ($filtering == 'lowStock') {
-                $resources = Resource::where('status', 'low stock')->get();
+                $resources = Auth::user()->resources()->where('status', 'low stock')->get();
             } else if ($filtering == 'outOfStock') {
-                $resources = Resource::where('status', 'out of stock')->get();
+                $resources = Auth::user()->resources()->where('status', 'out of stock')->get();
             }
         } else {
 
-            $resources = Resource::orderBy('category')->get();
+            $resources = Auth::user()->resources()->orderBy('category')->get();
         }
 
         $sum = 0;
@@ -59,7 +60,7 @@ class ResourceController extends Controller
      */
     public function store(Request $request)
     {
-        try {
+        try {   
 
             $validated = $request->validate([
                 'name' => ['required', 'string', 'max:255'],
@@ -86,7 +87,7 @@ class ResourceController extends Controller
 
         $validated['price_in_cents'] = (int) round($validated['price_in_cents'] * 100);
 
-        $resource = Resource::create($validated);
+        $resource = Auth::user()->resources()->create($validated);
 
         return ['redirect' => "/resources/$resource->id", 'success' => true];
     }

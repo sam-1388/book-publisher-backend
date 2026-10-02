@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 use App\Rules\OneEmployeeOneTask;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
@@ -17,7 +18,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::all();
+        $tasks = Auth::user()->tasks;
 
         foreach ($tasks as $task) {
             if ($task->page_start === null && $task->page_end === null) {
@@ -37,8 +38,6 @@ class TaskController extends Controller
                 'deadline' => str_replace('after', 'left', Date::now()->until($task->deadline)),
                 'finished' => $task->finished == 0 ? false : true,
             ]);
-
-            
         }
         return $tasks;
     }
@@ -56,16 +55,17 @@ class TaskController extends Controller
                 'deadline' => [Rule::dateTime()->after(today())->format('Y-m-d')],
                 'page_start' => ['nullable', Rule::numeric()->min(1)],
                 'page_end' => ['nullable',  Rule::numeric()->min(1)->greaterThan('page_start')],
-                'book_id' => [Rule::exists('books', 'id')],
+                'book_id' => [Rule::exists('books', 'id')->where('user_id', Auth::id())],
                 'employee_id' => ['required', new OneEmployeeOneTask],
                 'notes' => [Rule::string()->max(255)]
             ]);
 
 
-            $task = Task::create([
+            $task = Auth::user()->tasks()->create([
                 ...$data,
                 'finished' => false,
             ]);
+
 
             return response(['redirect' => "/tasks/$task->id", 'success' => true], 200);
         } catch (ValidationException $th) {
